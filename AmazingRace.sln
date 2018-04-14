@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazingRace", "AmazingRace\AmazingRace.csproj", "{73856C6B-CA14-4294-B12D-D9AE5FFD2CCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazingRace.Tests", "AmazingRace.Tests\AmazingRace.Tests.csproj", "{854AE296-CA49-44A6-A81A-5F6EF4853CA3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73856C6B-CA14-4294-B12D-D9AE5FFD2CCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73856C6B-CA14-4294-B12D-D9AE5FFD2CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73856C6B-CA14-4294-B12D-D9AE5FFD2CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73856C6B-CA14-4294-B12D-D9AE5FFD2CCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{854AE296-CA49-44A6-A81A-5F6EF4853CA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{854AE296-CA49-44A6-A81A-5F6EF4853CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{854AE296-CA49-44A6-A81A-5F6EF4853CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{854AE296-CA49-44A6-A81A-5F6EF4853CA3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {944DAB29-6F43-4F9B-BAE6-4DE7E4F4440F}
+	EndGlobalSection
+EndGlobal
