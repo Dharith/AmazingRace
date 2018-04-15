@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewData["Title"] = "The Amazing Race";
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/main_styles.css" />
+
+    <style>
+        #teamsCarousel {
+            margin-top: 25px;
+            margin-bottom: 500px;
+            padding: 0px !important;
+        }
+
+        .carousel-control {
+            color: #ffcc00 !important;
+        }
+
+        .carousel-indicators > li {
+            background-color: #ffcc00 !important;
+            border-color: #e6b800 !important;
+        }
+
+        .carousel-caption > h3, .carousel-caption > h2 {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="row">
+        <h1 class="col-md-12" style="text-align:center;color:#ffcc00;margin-top:50px;"> THE TEAMS </h1>
+        <div class="col-md-2 col-xs-2"></div>
+        <div id="teamsCarousel" class="carousel slide col-md-8 col-xs-8" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#teamsCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#teamsCarousel" data-slide-to="1"></li>
+                <li data-target="#teamsCarousel" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="https://wwwimage-secure.cbsstatic.com/thumbnails/photos/770xh/5d3360aa5d528a07_racepromo.jpg" alt="Los Angeles">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2>Get to know them!</h2>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="https://wwwimage-secure.cbsstatic.com/thumbnails/photos/770xh/1de8977fbb14aef5_codyjess.jpg" alt="Chicago">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Cody Nickson and Jessica Graf (#TeamBigBrother)</h3>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="https://wwwimage-secure.cbsstatic.com/thumbnails/photos/770xh/c674a50002fed164_alexconor.jpg" alt="New York">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Alex Rossi and Conor Daly (#TeamIndyCar)</h3>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#teamsCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#teamsCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <div class="col-md-2 col-xs-2"></div>
+    </div>
+</body>

@@ -1,0 +1,22 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Patua+One|Roboto+Condensed');
+
+
+body {
+    background-color: #1a1a1a;
+    font: #ffffff;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+h2 {
+    color: #ffffff;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700;
+}
+
+footer {
+    color: #ffffff;
+    bottom: 0px;
+    position: absolute;
+    display: inline-block;
+    margin-bottom: 25px;
+}

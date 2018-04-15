@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="bootstrap admin template">
+    <meta name="author" content="">
+    <title>Dashboard | Remark Admin Template</title>
+    <link rel="apple-touch-icon" href="~/global/assets/images/apple-touch-icon.png">
+    <link rel="shortcut icon" href="~/global/assets/images/favicon.ico">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/site.min.css">
+    <!-- Plugins -->
+    <link rel="stylesheet" href="~/global/vendor/animsition/animsition.css">
+    <link rel="stylesheet" href="~/global/vendor/asscrollable/asScrollable.css">
+    <link rel="stylesheet" href="~/global/vendor/switchery/switchery.css">
+    <link rel="stylesheet" href="~/global/vendor/intro-js/introjs.css">
+    <link rel="stylesheet" href="~/global/vendor/slidepanel/slidePanel.css">
+    <link rel="stylesheet" href="~/global/vendor/flag-icon-css/flag-icon.css">
+    <link rel="stylesheet" href="~/global/vendor/waves/waves.css">
+
+    <link rel="stylesheet" href="~/global/assets/examples/css/dashboard/v1.css">
+    <link rel="stylesheet" href="~/global/assets/examples/css/structure/ribbon.css">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="~/global/fonts/material-design/material-design.min.css">
+    <link rel="stylesheet" href="~/global/fonts/brand-icons/brand-icons.min.css">
+    <link href="~/global/assets/skins/red.min.css" rel="stylesheet" />
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+    
+    <script src="~/global/vendor/modernizr/modernizr.js"></script>
+    <script src="~/global/vendor/breakpoints/breakpoints.js"></script>
+    <script>
+      Breakpoints();
+    </script>
+</head>
+<body class="dashboard site-menubar-fold">
+    <!--[if lt IE 8]>
+          <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+    @*<nav class="site-navbar navbar navbar-inverse navbar-fixed-top navbar-mega" role="navigation">
+        <div class="navbar-container container-fluid">
+            <!-- Navbar Collapse -->
+            <div class="navbar-collapse navbar-collapse-toolbar" id="site-navbar-collapse">
+                <!-- Navbar Toolbar -->
+                <ul class="nav navbar-toolbar">
+                    <li id="toggleMenubar">
+                        <a data-toggle="menubar" href="#" role="button">
+                            <i class="icon hamburger hamburger-arrow-left">
+                                <span class="sr-only"></span>
+                                <span class="hamburger-bar"></span>
+                            </i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="icon md-search" data-toggle="collapse" href="#site-navbar-search" role="button">
+                            <span class="sr-only"></span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- End Navbar Toolbar -->
+                <!-- Navbar Toolbar Right -->
+                <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" href="javascript:void(0)" title="Messages" aria-expanded="false"
+                           data-animation="scale-up" role="button">
+                            <i class="icon md-settings" aria-hidden="true"></i>
+                            <span class="badge badge-info up"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-right dropdown-menu-media" role="menu">
+                            <li class="dropdown-menu-header" role="presentation">
+                                <h5>Profile</h5>
+                                <span class="label label-round label-info">Manage Profile</span>
+                            </li>
+
+                            <li class="dropdown-menu-footer" role="presentation">
+                                <a class="dropdown-menu-footer-btn" href="javascript:void(0)" role="button">
+                                    <i class="icon md-settings" aria-hidden="true"></i>
+                                </a>
+                                <a href="~/" role="menuitem">
+                                    Log Out
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- End Navbar Collapse -->
+            <!-- Site Navbar Seach -->
+            <div class="collapse navbar-search-overlap" id="site-navbar-search">
+                <form role="search">
+                    <div class="form-group">
+                        <div class="input-search">
+                            <i class="input-search-icon md-search" aria-hidden="true"></i>
+                            <input type="text" class="form-control" name="site-search" placeholder="Search...">
+                            <button type="button" class="input-search-close icon md-close" data-target="#site-navbar-search"
+                                    data-toggle="collapse" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- End Site Navbar Seach -->
+        </div>
+    </nav>*@
+    <div class="site-menubar">
+        <div class="site-menubar-header cover">
+            <div class="cover-background vertical-align" style="background-image: url('~/global/assets//examples/images/menubar-header.jpg')">
+                <div class="vertical-align-middle">
+
+                </div>
+            </div>
+        </div>
+        <div class="site-menubar-body">
+            <div>
+                <div>
+                    <ul class="site-menu">
+                        <li class="site-menu-item active">
+                            <a class="animsition-link" href="~/AmazingRace/GotoDahsboard">
+                            <i class="site-menu-icon md-widgets" aria-hidden="true"></i>
+                            <span class="site-menu-title"> Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="site-menu-item has-sub">
+                            <a class="animsition-link" href="~/AmazingRace/Events">
+                                
+                            <i class="site-menu-icon md-google-pages" aria-hidden="true"></i>
+                            <span class="site-menu-title">Events</span>
+                            </a>
+                        </li>
+
+                        <li class="site-menu-item has-sub">
+                            <a href="~/Recordings/Index">
+                                <i class="site-menu-icon md-search-replace" aria-hidden="true"></i>
+                                <span class="site-menu-title">Teams</span>
+                            </a>
+                        </li>
+                        <li class="site-menu-item has-sub">
+                            <a href="~/Forms/Index">
+                                <i class="site-menu-icon md-truck" aria-hidden="true"></i>
+                                <span class="site-menu-title">Race</span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page -->
+    <div class="page animsition">
+
+        @RenderBody()
+
+    </div>
+
+    <!-- Core  -->
+    <script src="~/global/vendor/jquery/jquery.js"></script>
+    <script src="~/global/vendor/bootstrap/bootstrap.js"></script>
+    <script src="~/global/vendor/animsition/animsition.js"></script>
+    <script src="~/global/vendor/asscroll/jquery-asScroll.js"></script>
+    <script src="~/global/vendor/mousewheel/jquery.mousewheel.js"></script>
+    <script src="~/global/vendor/asscrollable/jquery.asScrollable.all.js"></script>
+    <script src="~/global/vendor/ashoverscroll/jquery-asHoverScroll.js"></script>
+    <script src="~/global/vendor/waves/waves.js"></script>
+    <!-- Plugins -->
+    <script src="~/global/vendor/switchery/switchery.min.js"></script>
+    <script src="~/global/vendor/intro-js/intro.js"></script>
+    <script src="~/global/vendor/screenfull/screenfull.js"></script>
+    <script src="~/global/vendor/slidepanel/jquery-slidePanel.js"></script>
+
+    <script src="~/global/vendor/jvectormap/jquery-jvectormap.min.js"></script>
+    <script src="~/global/vendor/jvectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="~/global/vendor/matchheight/jquery.matchHeight-min.js"></script>
+    <script src="~/global/vendor/peity/jquery.peity.min.js"></script>
+    <!-- Scripts -->
+    <script src="~/global/js/core.js"></script>
+    <script src="~/global/assets/js/site.js"></script>
+    <script src="~/global/assets/js/sections/menu.js"></script>
+    <script src="~/global/assets/js/sections/menubar.js"></script>
+    <script src="~/global/assets/js/sections/sidebar.js"></script>
+    <script src="~/global/js/configs/config-colors.js"></script>
+    <script src="~/global/assets/js/configs/config-tour.js"></script>
+    <script src="~/global/js/components/asscrollable.js"></script>
+    <script src="~/global/js/components/animsition.js"></script>
+    <script src="~/global/js/components/slidepanel.js"></script>
+    <script src="~/global/js/components/switchery.js"></script>
+    <script src="~/global/js/components/tabs.js"></script>
+    <script src="~/global/js/components/matchheight.js"></script>
+
+    <script src="~/global/js/components/peity.js"></script>
+    <script src="~/global/js/components/asscrollable.js"></script>
+    <script src="~/global/js/components/slidepanel.js"></script>
+    <script src="~/global/js/components/switchery.js"></script>
+    <script src="~/global/js/components/jquery-appear.js"></script>
+    <script src="~/global/js/components/nprogress.js"></script>
+    <script src="~/global/assets/examples/js/dashboard/v1.js"></script>
+    <script src="~/global/assets/examples/js/advanced/animation.js"></script>
+</body>
+</html>

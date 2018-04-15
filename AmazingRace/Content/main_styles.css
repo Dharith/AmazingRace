@@ -1,0 +1,60 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Patua+One|Roboto+Condensed');
+@import url('https://fonts.googleapis.com/css?family=Cutive');
+
+
+body {
+    background-color: #1a1a1a;
+    font: #ffffff;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+h2 {
+    color: #ffffff;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700;
+}
+
+.footerWrapper {
+    background-color: #1a1a1a;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    margin: 0px;
+    box-shadow: -5px 0px 10px #333;
+    z-index: 100;
+}
+
+footer {
+    width: 100%;
+    color: #ffffff;
+    margin-bottom: 25px;
+    margin-left: 10px;
+}
+
+.leaderBoard_btn {
+    width: auto;
+    background-color: #ffcc00;
+    color: #333;
+    border: 0px;
+    position: relative;
+    outline: none;
+    padding: 10px;
+    border-radius: 100px;
+    float: right;
+    margin-right: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-top: 15px;
+}
+
+    .leaderBoard_btn:hover {
+        background-color: #ffd11a;
+        text-decoration: none;
+        color: #333 !important;
+    }
+
+    .leaderBoard_btn:active, .leaderBoard_btn:focus {
+        background-color: #e6b800;
+        text-decoration: none;
+        color: #333 !important;
+    }

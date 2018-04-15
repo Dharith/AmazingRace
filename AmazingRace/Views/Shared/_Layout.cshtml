@@ -1,42 +1,143 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Amazing Race</title>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/Content/site.css" />
+        <link rel="stylesheet" href="~/Content/main_styles.css" />
+
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+
+    <style>
+        .navbarlinks {
+            color: #333;
+            font-family: 'Patua One',cursive;
+            font-weight: bold;
+        }
+
+        .navbar-nav {
+            position: relative;
+            right: 5px;
+            float: right;
+            color: #333;
+        }
+
+            .navbar-nav > li > a:hover {
+                background-color: #ffd11a;
+                color: #333 !important;
+            }
+
+
+
+        .navbar-brand,
+        .navbar-brand:hover {
+            color: #333 !important;
+            font-weight: bold;
+            font-size: 25px;
+            font-family: 'Patua One',cursive;
+        }
+
+        .icon-bar {
+            background-color: #333;
+        }
+    </style>
+
+
+
+
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-fixed-top navigationbar" style="background-color: #ffcc00;color: #333;">
         <div class="container">
-            <div class="navbar-header">
+            <div class="navbar-header" style="background-color: #ffcc00;color: #333;">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">The Amazing Race</a>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" style="background-color: #ffcc00;color: #333;">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li><a class="navbarlinks" asp-area="" asp-controller="AmazingRace" asp-action="Index">Home</a></li>
+                    <li><a class="navbarlinks" asp-area="" asp-controller="AmazingRace" asp-action="About">About</a></li>
+                    <li><a class="navbarlinks" asp-area="" asp-controller="AmazingRace" asp-action="Contact">Contact</a></li>
+                    @*@if (@Context.Request.Path.Equals("/AmazingRace") || @Context.Request.Path.Equals("/AmazingRace/Index"))
+                    {*@
+                    <li><a id="login_button" class="navbarlinks signin" asp-area="" asp-controller="AmazingRace" asp-action="Login">Login</a></li>
+                    <div id="Display"></div>
+                    @*}*@
+                    @*else
+                    {
+            <li><a class="navbarlinks" asp-area="" asp-controller="AmazingRace" asp-action="SignOut">Sign Out</a></li>
+        }*@
                 </ul>
             </div>
         </div>
-    </div>
+    </nav>
+
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+
+    </div>
+
+    <div class="footerWrapper">
+        <footer class="row">
+            <p class="col-md-3 col-xs-3" style="width:auto;margin-left:25px;margin-top:15px;color:#888">&copy; 2018 - Amazing Race</p>
+            <div class="col-md-6 col-xs-6"></div>
+            <a class="col-md-3 col-xs-3 leaderBoard_btn" href="~/LeaderBoard">Leader Board</a>
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+
+        <script type="text/javascript">
+		$("#login_button").click(function () {
+			$.get('@Url.Action("Login", "AmazingRace")', {}, function (response) {
+				$("#Display").html(response);
+			});
+		});
+        </script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+
+    
+
 </body>
 </html>
+
