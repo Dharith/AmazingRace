@@ -15,6 +15,9 @@ namespace AmazingRace.DAL
         }
 
         public DbSet<Events> Events { get; set; }
+        public DbSet<Team> Teams { get; set; }
+
+        public DbSet<PitStop> PitStops { get; set; }
 
         public virtual void Commit()
         {

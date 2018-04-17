@@ -1,0 +1,31 @@
+﻿@model IEnumerable<AmazingRace.Models.Models.Team>
+
+@{
+    ViewBag.Title = "Race";
+    Layout = "~/Areas/Staff/Views/Shared/LayoutDashboard.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+    </tr>
+    @if (Model != null)
+    {
+foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Name }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Name }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Name })
+        </td>
+    </tr>
+}
+    }
+
+</table>

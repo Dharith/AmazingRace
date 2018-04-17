@@ -6,34 +6,14 @@ using System.Web;
 
 namespace AmazingRace.Models.Models
 {
-    public class Race
-    {
-        public class Team
-        {
-            [Key] [Required]
-            public String Name { get; set; }
-            private List<Events> events = new List<Events>();
-            public virtual List<Events> Events
-            {
-                get
-                {
-                    return events;
-                }
-                set
-                {
-                    events = value;
-                }
-            }
-        }
-    }
-
     public class Events
     {
-        [Key][Required]
-        [RegularExpression(@"d{4}$", ErrorMessage ="ID should be 4 digits")]
+        [Key]
+        [Required]
+        [RegularExpression(@"d{4}$", ErrorMessage = "ID should be 4 digits")]
         public String EventId { get; set; }
 
-        [Required] 
+        [Required]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
@@ -45,14 +25,33 @@ namespace AmazingRace.Models.Models
 
         private List<PitStop> pitStops = new List<PitStop>();
     }
-
+        public class Team
+        {
+            [Key] [Required]
+            public String Name { get; set; }
+            private List<Events> events = new List<Events>();
+            //public virtual List<Events> Events
+            //{
+            //    get
+            //    {
+            //        return events;
+            //    }
+            //    set
+            //    {
+            //        events = value;
+            //    }
+            //}
+        }
+    
+    
     public class PitStop
     {
         [Required]
         public String Location { get; set; }
 
+        [Key]
         [Required]
-        public String Name { get; set; }
+                public String Name { get; set; }
 
     }
 }

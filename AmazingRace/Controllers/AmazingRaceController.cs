@@ -36,5 +36,10 @@ namespace AmazingRace.Controllers
         {
             return View("~/Areas/Staff/Views/Events/index.cshtml");
         }
+
+        public ActionResult Team()
+        {
+            return View("~/Areas/Staff/Views/Team/index.cshtml");
+        }
     }
 }

@@ -10,24 +10,24 @@ using AmazingRace.Models.Models;
 
 namespace AmazingRace.Areas.Staff.Controllers
 {
-    public class EventsController : Controller
+    public class PitStopController : Controller
     {
-        private IRepository<Events> rep = null;
+        private IRepository<PitStop> rep = null;
 
-        public EventsController()
+        public PitStopController()
         {
-            this.rep = new EventsRespository<Events>();
+            this.rep = new EventsRespository<PitStop>();
         }
 
-        // GET: Staff/Events
+        // GET: Staff/PitStop
         [HttpGet]
         public ActionResult Index()
         {
-            var events = rep.GetEvents();
-            return View(events);
+            var PitStop = rep.GetEvents();
+            return View(PitStop);
         }
 
-        // GET: Staff/Events/Details/5
+        // GET: Staff/PitStop/Details/5
         public ActionResult Details(int id)
         {
             return View();
@@ -40,25 +40,25 @@ namespace AmazingRace.Areas.Staff.Controllers
         }
 
 
-        // GET: Staff/Events/Create
+        // GET: Staff/PitStop/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Events events)
+        public ActionResult Create(PitStop PitStop)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    rep.Create(events);
+                    rep.Create(PitStop);
                     rep.Save();
                     return RedirectToAction("Index");
                 }
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
-                if(exp.GetType() != typeof(DbEntityValidationException))
+                if (exp.GetType() != typeof(DbEntityValidationException))
                 {
-                    if(this.HttpContext.IsDebuggingEnabled)
+                    if (this.HttpContext.IsDebuggingEnabled)
                     {
                         ModelState.AddModelError(String.Empty, exp.ToString());
                     }
@@ -68,44 +68,45 @@ namespace AmazingRace.Areas.Staff.Controllers
                     }
                 }
             }
-            return View(events);
+            return View(PitStop);
         }
 
-        
-        // GET: Staff/Events/Edit/5
+
+        // GET: Staff/PitStop/Edit/5
         public ActionResult Edit(int id)
         {
-            var events = rep.GetById(id);
-            return View(events);
+            var PitStop = rep.GetById(id);
+            return View(PitStop);
         }
 
-        // POST: Staff/Events/Edit/5
+        // POST: Staff/PitStop/Edit/5
         [HttpPost]
-        public ActionResult Edit(Events events)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(PitStop PitStop)
         {
-            
-                if (ModelState.IsValid)
-                {
-                    rep.Update(events);
-                    rep.Save();
-                    return RedirectToAction("Index");
-                }
+
+            if (ModelState.IsValid)
+            {
+                rep.Update(PitStop);
+                rep.Save();
+                return RedirectToAction("Index");
+            }
             else
             {
-                return View(events);
+                return View(PitStop);
             }
         }
 
-        // GET: Staff/Events/Delete/5
+        // GET: Staff/PitStop/Delete/5
         public ActionResult Delete(int id)
         {
-            var events = rep.GetById(id);
-            return View(events);
+            var PitStop = rep.GetById(id);
+            return View(PitStop);
         }
 
-        // POST: Staff/Events/Delete/5
+        // POST: Staff/PitStop/Delete/5
         [HttpPost]
-        public ActionResult Delete(Events events)
+        public ActionResult Delete(PitStop PitStop)
         {
             try
             {

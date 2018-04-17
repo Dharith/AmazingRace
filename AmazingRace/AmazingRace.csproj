@@ -160,6 +160,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Staff\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Staff\Controllers\EventsController.cs" />
+    <Compile Include="Areas\Staff\Controllers\PitStopController.cs" />
+    <Compile Include="Areas\Staff\Controllers\TeamController.cs" />
     <Compile Include="Areas\Staff\StaffAreaRegistration.cs" />
     <Compile Include="Controllers\AmazingRaceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -190,6 +192,16 @@
     <Content Include="Areas\Staff\Views\Events\Index.cshtml" />
     <Content Include="Areas\Staff\Views\Events\Create.cshtml" />
     <Content Include="Areas\Staff\Views\Shared\LayoutDashboard.cshtml" />
+    <Content Include="Areas\Staff\Views\Events\Details.cshtml" />
+    <Content Include="Areas\Staff\Views\Events\Edit.cshtml" />
+    <Content Include="Areas\Staff\Views\PitStop\Index.cshtml" />
+    <Content Include="Areas\Staff\Views\PitStop\Details.cshtml" />
+    <Content Include="Areas\Staff\Views\PitStop\Create.cshtml" />
+    <Content Include="Areas\Staff\Views\PitStop\Edit.cshtml" />
+    <Content Include="Areas\Staff\Views\Team\Index.cshtml" />
+    <Content Include="Areas\Staff\Views\Team\Details.cshtml" />
+    <Content Include="Areas\Staff\Views\Team\Create.cshtml" />
+    <Content Include="Areas\Staff\Views\Team\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
