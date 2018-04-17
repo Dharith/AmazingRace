@@ -189,6 +189,7 @@
     <Content Include="Content\site.min.css" />
     <Content Include="Areas\Staff\Views\Events\Index.cshtml" />
     <Content Include="Areas\Staff\Views\Events\Create.cshtml" />
+    <Content Include="Areas\Staff\Views\Shared\LayoutDashboard.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -218,12 +219,10 @@
     <Content Include="Views\AmazingRace\Intro.cshtml" />
     <Content Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <Content Include="Views\AmazingRace\Login.cshtml" />
-    <Content Include="Views\Shared\_LayoutDashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Staff\Models\" />
-    <Folder Include="Areas\Staff\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
