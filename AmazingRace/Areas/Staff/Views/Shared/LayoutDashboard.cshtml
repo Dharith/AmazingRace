@@ -25,6 +25,7 @@
 
     <link rel="stylesheet" href="~/global/assets/examples/css/dashboard/v1.css">
     <link rel="stylesheet" href="~/global/assets/examples/css/structure/ribbon.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
     <!-- Fonts -->
     <link rel="stylesheet" href="~/global/fonts/material-design/material-design.min.css">
     <link rel="stylesheet" href="~/global/fonts/brand-icons/brand-icons.min.css">
@@ -33,130 +34,286 @@
 
     <script src="~/global/vendor/modernizr/modernizr.js"></script>
     <script src="~/global/vendor/breakpoints/breakpoints.js"></script>
-    <script>
-      Breakpoints();
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
+
+
+
+        <script>
+            Breakpoints();
     </script>
+    <link rel="stylesheet" href="~/Content/main_styles.css" />
+
+    <script>
+        $(document).ready(function () {
+                    $("#collapse_btn").click(function () {
+                        console.log("clicked");
+                        $("#collapse_btn").hide();
+                        $("#sidebar_expanded").show("slide", { direction: "left" },500);
+                    });
+                    $("#expand_btn").click(function () {
+                        console.log("clicked");
+                        $("#sidebar_expanded").hide("slide", { direction: "left" }, 500, function () {
+                            $("#collapse_btn").show();
+                        });
+                       
+                    });
+
+                });
+
+    </script>
+
+
+    <style>
+        body {
+            padding: 0px;
+        }
+
+        .navbarlinks {
+            color: #333;
+            font-family: 'Patua One',cursive;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .navbar-nav {
+            position: relative;
+            right: 5px;
+            float: right;
+            color: #333;
+        }
+
+
+            .navbar-nav > li > a:hover {
+                background-color: #ffd11a;
+                color: #333 !important;
+            }
+
+
+
+        .navbar-brand,
+        .navbar-brand:hover {
+            color: #333 !important;
+            font-weight: bold;
+            font-size: 25px;
+            font-family: 'Patua One',cursive;
+            cursor: pointer;
+        }
+
+        .navbar {
+            margin-bottom: 0px;
+            position: absolute;
+        }
+
+        .icon-bar {
+            background-color: #333;
+        }
+
+        .site-menubar-body {
+            position: relative;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-flow:row;
+            width:100%;
+            height: 100%;
+            position: relative;
+            margin-top:50px;
+        }
+
+        .sidebar-expanded {
+            height: 100%;
+            width: 30vh;
+            background-color: #323232;
+            display: none;
+        }
+
+        .sidebar-collapsed {
+            height: 100%;
+            width: 10vh;
+            background-color: #323232;
+        }
+
+        .site-menu-collapse {
+            height: 100%;
+            width: 10vh;
+            margin-top: 75px;
+            list-style-type: none;
+            align-items:center;
+            padding:0px;
+            color: #ffcc00;
+        }
+            .site-menu-collapse > li > a {
+                color: #ffcc00;
+                width: 10vh;
+                height:30%;
+            }
+
+            .site-menu-collapse > li > a > span {
+                color: #ffcc00;
+                width: 10vh;
+            }
+
+            .site-menu-collapse > li {
+                width: 10vh;
+                height:50px;
+                padding-left:25px;
+            }
+
+        .site-menu {
+            height: 100%;
+            width: 30vh;
+            padding-top: 50px;
+            list-style-type: none;
+            color: #ffcc00;
+            padding-bottom:0px;
+            padding-left:0px;
+        }
+
+            .site-menu > li > a {
+                color: #ffcc00;
+                width:30vh;
+            }
+
+            .site-menu > li > a > span {
+                color: #ffcc00;
+                width: 30vh;
+            }
+
+            .site-menu > li {
+                width: 30vh;
+                
+            }
+
+        .page {
+            width: 750px;
+            height: 250px !important;
+            margin-top: 25px;
+            padding: 25px;
+            color: #333333;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+
+       
+        .collapse_sidebar {
+            position: relative;
+            float: right;
+            right: 0px;
+            height: 100%;
+            outline: 0px;
+            background-color: inherit;
+            border: none;
+            color: #ffcc00;
+            top: 0px;
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body class="dashboard site-menubar-fold">
-    <!--[if lt IE 8]>
-          <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-      <![endif]-->
-    @*<nav class="site-navbar navbar navbar-inverse navbar-fixed-top navbar-mega" role="navigation">
-            <div class="navbar-container container-fluid">
-                <!-- Navbar Collapse -->
-                <div class="navbar-collapse navbar-collapse-toolbar" id="site-navbar-collapse">
-                    <!-- Navbar Toolbar -->
-                    <ul class="nav navbar-toolbar">
-                        <li id="toggleMenubar">
-                            <a data-toggle="menubar" href="#" role="button">
-                                <i class="icon hamburger hamburger-arrow-left">
-                                    <span class="sr-only"></span>
-                                    <span class="hamburger-bar"></span>
-                                </i>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="icon md-search" data-toggle="collapse" href="#site-navbar-search" role="button">
-                                <span class="sr-only"></span>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- End Navbar Toolbar -->
-                    <!-- Navbar Toolbar Right -->
-                    <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" href="javascript:void(0)" title="Messages" aria-expanded="false"
-                               data-animation="scale-up" role="button">
-                                <i class="icon md-settings" aria-hidden="true"></i>
-                                <span class="badge badge-info up"></span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right dropdown-menu-media" role="menu">
-                                <li class="dropdown-menu-header" role="presentation">
-                                    <h5>Profile</h5>
-                                    <span class="label label-round label-info">Manage Profile</span>
-                                </li>
 
-                                <li class="dropdown-menu-footer" role="presentation">
-                                    <a class="dropdown-menu-footer-btn" href="javascript:void(0)" role="button">
-                                        <i class="icon md-settings" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="~/" role="menuitem">
-                                        Log Out
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                    </ul>
-                </div>
-                <!-- End Navbar Collapse -->
-                <!-- Site Navbar Seach -->
-                <div class="collapse navbar-search-overlap" id="site-navbar-search">
-                    <form role="search">
-                        <div class="form-group">
-                            <div class="input-search">
-                                <i class="input-search-icon md-search" aria-hidden="true"></i>
-                                <input type="text" class="form-control" name="site-search" placeholder="Search...">
-                                <button type="button" class="input-search-close icon md-close" data-target="#site-navbar-search"
-                                        data-toggle="collapse" aria-label="Close"></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!-- End Site Navbar Seach -->
+    <nav class="navbar navbar-fixed-top navigationbar" style="background-color: #ffcc00;color: #333;">
+        <div class="container">
+            <div class="navbar-header" style="background-color: #ffcc00;color: #333;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">The Amazing Race</a>
             </div>
-        </nav>*@
-    <div class="site-menubar">
-        <div class="site-menubar-header cover">
-            <div class="cover-background vertical-align" style="background-image: url('~/global/assets//examples/images/menubar-header.jpg')">
-                <div class="vertical-align-middle">
-
-                </div>
+            <div class="navbar-collapse collapse" style="background-color: #ffcc00;color: #333;">
+                <ul class="nav navbar-nav">
+                    <li><a class="navbarlinks" asp-area="" asp-controller="AmazingRace" asp-action="Index">Home</a></li>
+                    <li><a class="navbarlinks" asp-area="" asp-controller="AmazingRace" asp-action="About">About</a></li>
+                    <li><a class="navbarlinks" asp-area="" asp-controller="AmazingRace" asp-action="Contact">Contact</a></li>
+                    <li><a id="login_button" class="navbarlinks signin" asp-area="" asp-controller="AmazingRace" asp-action="SignOut">Sign Out</a></li>
+                </ul>
             </div>
         </div>
-        <div class="site-menubar-body">
-            <div>
-                <div>
-                    <ul class="site-menu">
-                        <li class="site-menu-item active">
-                            <a class="animsition-link" href="~/AmazingRace/GotoDahsboard">
-                                <i class="site-menu-icon md-widgets" aria-hidden="true"></i>
-                                <span class="site-menu-title"> Dashboard</span>
-                            </a>
-                        </li>
+    </nav>
+    <div class="wrapper">
+        <div class="sidebar-collapsed" id="sidebar_collapsed">
 
-                        <li class="site-menu-item has-sub">
-                            <a class="animsition-link" href="~/AmazingRace/Events">
+            <button class="collapse_sidebar" id="collapse_btn">
+                <i class="ion-android-arrow-dropright" aria-hidden="true"></i>
+            </button>
 
-                                <i class="site-menu-icon md-google-pages" aria-hidden="true"></i>
-                                <span class="site-menu-title">Events</span>
-                            </a>
-                        </li>
+            <ul class="site-menu-collapse">
+                <li class="site-menu-item">
+                    <a class="animsition-link" href="~/AmazingRace/GotoDahsboard">
+                        <i class="ion-android-list" aria-hidden="true"></i>
+                    </a>
+                </li>
 
-                        <li class="site-menu-item has-sub">
-                            <a href="~/Recordings/Index">
-                                <i class="site-menu-icon md-search-replace" aria-hidden="true"></i>
-                                <span class="site-menu-title">Teams</span>
-                            </a>
-                        </li>
-                        <li class="site-menu-item has-sub">
-                            <a href="~/Forms/Index">
-                                <i class="site-menu-icon md-truck" aria-hidden="true"></i>
-                                <span class="site-menu-title">Race</span>
-                            </a>
-                        </li>
+                <li class="site-menu-item has-sub">
+                    <a class="animsition-link" href="~/AmazingRace/Events">
 
+                        <i class="ion-android-calendar" aria-hidden="true"></i>
 
-                    </ul>
-                </div>
-            </div>
+                    </a>
+                </li>
+
+                <li class="site-menu-item has-sub">
+                    <a href="~/Recordings/Index">
+                        <i class="ion-android-people" aria-hidden="true"></i>
+
+                    </a>
+                </li>
+                <li class="site-menu-item has-sub">
+                    <a href="~/Forms/Index">
+                        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                            <path fill="#ffcc00" d="M16.5,5.5A2,2 0 0,0 18.5,3.5A2,2 0 0,0 16.5,1.5A2,2 0 0,0 14.5,3.5A2,2 0 0,0 16.5,5.5M12.9,19.4L13.9,15L16,17V23H18V15.5L15.9,13.5L16.5,10.5C17.89,12.09 19.89,13 22,13V11C20.24,11.03 18.6,10.11 17.7,8.6L16.7,7C16.34,6.4 15.7,6 15,6C14.7,6 14.5,6.1 14.2,6.1L9,8.3V13H11V9.6L12.8,8.9L11.2,17L6.3,16L5.9,18L12.9,19.4M4,9A1,1 0 0,1 3,8A1,1 0 0,1 4,7H7V9H4M5,5A1,1 0 0,1 4,4A1,1 0 0,1 5,3H10V5H5M3,13A1,1 0 0,1 2,12A1,1 0 0,1 3,11H7V13H3Z" />
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+
         </div>
-    </div>
-    <!-- Page -->
-    <div class="page animsition">
+        <div class="sidebar-expanded" id="sidebar_expanded">
+            <button class="collapse_sidebar" id="expand_btn">
+                <i class="ion-android-arrow-dropleft" aria-hidden="true"></i>
+            </button>
+            <ul class="site-menu">
+                <li class="site-menu-item ">
+                    <a class="animsition-link" href="~/AmazingRace/GotoDahsboard">
+                        <i class="site-menu-icon md-widgets" aria-hidden="true"></i>
+                        <span class="site-menu-title"> Dashboard</span>
+                    </a>
+                </li>
 
-        @RenderBody()
+                <li class="site-menu-item has-sub">
+                    <a class="animsition-link" href="~/AmazingRace/Events">
 
+                        <i class="site-menu-icon md-google-pages" aria-hidden="true"></i>
+                        <span class="site-menu-title">Events</span>
+                    </a>
+                </li>
+
+                <li class="site-menu-item has-sub">
+                    <a href="~/Recordings/Index">
+                        <i class="site-menu-icon md-search-replace" aria-hidden="true"></i>
+                        <span class="site-menu-title">Teams</span>
+                    </a>
+                </li>
+                <li class="site-menu-item has-sub">
+                    <a href="~/Forms/Index">
+                        <i class="site-menu-icon md-truck" aria-hidden="true"></i>
+                        <span class="site-menu-title">Race</span>
+                    </a>
+                </li>
+
+
+            </ul>
+        </div>
+
+        <!-- Page -->
+        <div class="page animation">
+
+            @RenderBody()
+
+        </div>
     </div>
 
     <!-- Core  -->

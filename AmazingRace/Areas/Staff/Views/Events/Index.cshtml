@@ -5,11 +5,61 @@
     Layout = "~/Areas/Staff/Views/Shared/LayoutDashboard.cshtml";
 }
 
+<head>
+    <style>
+        .page > h2 {
+            color: #333333;
+        }
+
+        table {
+            overflow-y:scroll;
+        }
+
+        th {
+            text-align: center;
+            border: 2px solid #ffcc00;
+            background-color: #333333;
+            color: #ffcc00;
+        }
+
+        tbody {
+            border: 2px solid #ffcc00;
+        }
+
+        tr {
+            border: 2px solid #ffcc00;
+            color: #333333;
+
+        }
+
+        .createNew {
+            position: relative;
+            float: right;
+            top: -35px;
+            font-family: 'Roboto Condensed', sans-serif;
+            border:0px;
+            outline:none;
+            background-color:#ffcc00;
+            width:150px;
+            padding:10px;
+            border-radius:50px;
+        }
+
+        .createNew > a {
+            text-decoration:none;
+            color:#333333;
+            font-size:15px;
+            font-weight:bold;
+
+        }
+    </style>
+</head>
+
 <h2>Index</h2>
 
-<p>
+<button class="createNew">
     @Html.ActionLink("Create New", "Create","Events")
-</p>
+</button>
 <table class="table">
     <tr>
         <th>
@@ -21,7 +71,7 @@
         <th>
             @Html.DisplayNameFor(model => model.City)
         </th>
-        <th></th>
+       
     </tr>
     @if(Model!=null)
     {
