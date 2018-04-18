@@ -1,5 +1,4 @@
-﻿@model AmazingRace.Models.User
-
+﻿
 @{
     Layout = null;
 }
@@ -78,6 +77,7 @@
 
         .login_div > input {
             border-radius: 50px;
+
         }
 
             .login_div > input:active, .login_div > input:focus {
@@ -88,15 +88,16 @@
 </head>
 <body class="page-login-v2 layout-full page-dark">
     <div class="login_div">
-        @using (Html.BeginForm()) {
-            @Html.TextBoxFor(x => x.userName);
-            <br/>
-            @Html.TextBoxFor(x => x.passWord, new { type = "password" });
-            <br />
-            <a>Forgot Password?</a>
-            <button type="submit" class="login_btn">Login</button>
-        }
+        <input name="userName" class="form-control" type="text" />
+        <br />
+        <input name="passWord" class="form-control" type="password" />
+        <br />
+        <a>Forgot Password?</a>
 
+        @using (Html.BeginForm("GotoDashBoard", "AmazingRace")) {
+            <button type = "submit" class="btn-block login_btn">Login</button>
+        }
+       
     </div>
 
 </body>

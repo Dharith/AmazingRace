@@ -22,27 +22,12 @@ namespace AmazingRace.Controllers
             return View();
         }
        
-        [HttpGet]
+  
         public ActionResult Login()
         {
-            return PartialView("~/Views/Login.cshtml");
+            return PartialView();
         }
 
-        [HttpPost]
-
-        public ActionResult Login(User user)
-        {
-            if (ModelState.IsValid)
-            {
-                return RedirectToAction("GotoDashBoard");
-
-            }
-
-            else
-            {
-                return PartialView("~/Views/Login.cshtml");
-            }
-        }
 
        
 
