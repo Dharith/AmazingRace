@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AmazingRace.DAL;
-using AmazingRace.Models.Models;
+using AmazingRace.Models;
 
 namespace AmazingRace.Controllers
 {
@@ -21,11 +21,30 @@ namespace AmazingRace.Controllers
         {
             return View();
         }
-
+       
+        [HttpGet]
         public ActionResult Login()
         {
-            return PartialView();
+            return PartialView("~/Views/Login.cshtml");
         }
+
+        [HttpPost]
+
+        public ActionResult Login(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("GotoDashBoard");
+
+            }
+
+            else
+            {
+                return PartialView("~/Views/Login.cshtml");
+            }
+        }
+
+       
 
         public ActionResult GotoDashBoard()
         {

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model AmazingRace.Models.User
+
+@{
     Layout = null;
 }
 <!DOCTYPE html>
@@ -45,29 +47,64 @@
           <script>
         Breakpoints();
           </script>*@
+
+    <style>
+        .login_btn {
+            background-color: #333;
+            font-family: 'Patua One',cursive;
+            color: #ffcc00;
+            border: 0px;
+            outline: none;
+            padding: 5px;
+            border-radius: 50px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .login_div {
+            padding-top: 75px;
+            text-align: center;
+        }
+
+            .login_div > a {
+                color: #1a1a1a !important;
+                font-family: 'Roboto Condensed', sans-serif;
+            }
+
+                .login_div > a:hover, .login_div > a:focus, .login_div > a:active {
+                    color: #323232 !important;
+                    font-family: 'Roboto Condensed', sans-serif;
+                }
+
+        .login_div > input {
+            border-radius: 50px;
+        }
+
+            .login_div > input:active, .login_div > input:focus {
+                outline-color: #323232;
+                border-color: #323232;
+            }
+    </style>
 </head>
 <body class="page-login-v2 layout-full page-dark">
+    <div class="login_div">
+        @using (Html.BeginForm()) {
+            @Html.TextBoxFor(x => x.userName);
+            <br/>
+            @Html.TextBoxFor(x => x.passWord, new { type = "password" });
+            <br />
+            <a>Forgot Password?</a>
+            <button type="submit" class="login_btn">Login</button>
+        }
 
-    <div>
-        <label class="sr-only" for="inputEmail">Email</label>
-        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email">
-        <label class="sr-only" for="inputPassword">Password</label>
-        <input type="password" class="form-control" id="inputPassword" name="password"
-               placeholder="Password">
-        <a class="pull-right" href="#">Forgot password?</a>
-    </div>
-    @using(Html.BeginForm("GotoDashboard", "AmazingRace")) { 
-    <button type="submit" class="btn btn-primary btn-block pull-right">Sign in</button>
-    }
-    <div class="form-group clearfix">
     </div>
 
 </body>
 </html>
 
 @*<script>
-    function Signin() {
-        @{Html.RenderAction("~/Areas/Staff/Controllers/Dashboard/Index");
+        function Signin() {
+            @{Html.RenderAction("~/Areas/Staff/Controllers/Dashboard/Index");
+            }
         }
-    }
-</script>*@
+    </script>*@
