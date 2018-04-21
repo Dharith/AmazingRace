@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebAPI.Context;
@@ -25,25 +26,12 @@ namespace WebAPI.Controllers
             this._eventRepository = new EventRepository<Event>();
         } 
 
-        [Route("api/GetEvents")]
+        [Route("AllEvents")]
         [HttpGet]
         public IEnumerable<Event> GetEvents()
         {
-            IEnumerable<Event> eventDetail = new List<Event>();
-            try
-            {
-                eventDetail = _eventRepository.GetAll();
-            }
-            catch (ApplicationException ex)
-            {
-                throw new HttpResponseException(new HttpResponseMessage { StatusCode = HttpStatusCode.BadRequest, ReasonPhrase = ex.Message });
-            }
-            catch (Exception ex)
-            {
-                throw new HttpResponseException(new HttpResponseMessage { StatusCode = HttpStatusCode.BadGateway, ReasonPhrase = ex.Message });
-            }
-
-            return eventDetail;
+                IEnumerable<Event> events = _eventRepository.GetAll();
+                return events;
         }
 
         // GET: api/EventsAPI/5
@@ -64,7 +52,7 @@ namespace WebAPI.Controllers
         }
 
         // PUT: api/EventsAPI/5
-        [Route("api/InsertEvent")]
+        [Route("InsertEvent")]
         [HttpPost]
         public void PutEvent(Event @event)
         {
@@ -83,8 +71,9 @@ namespace WebAPI.Controllers
             
         }
 
-        // POST: api/EventsAPI
+        // POST: api/CreateEvent
         [ResponseType(typeof(Event))]
+        [Route("CreateEvent")]
         public IHttpActionResult PostEvent(Event @event)
         {
             if (!ModelState.IsValid)
@@ -114,6 +103,7 @@ namespace WebAPI.Controllers
         }
 
         // DELETE: api/EventsAPI/5
+        [Route("DeleteEvent")]
         [ResponseType(typeof(Event))]
         public IHttpActionResult DeleteEvent(string id)
         {

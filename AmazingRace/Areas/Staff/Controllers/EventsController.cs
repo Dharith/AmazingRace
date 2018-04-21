@@ -2,98 +2,119 @@
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using AmazingRace.Models.Models;
+using Newtonsoft.Json;
 
 namespace AmazingRace.Areas.Staff.Controllers
 {
+    [RequireHttps]
     public class EventsController : Controller
     {
-        EventServiceClient client = new EventServiceClient();
-
+        // EventServiceClient client = new EventServiceClient();
+        string Baseurl = "http://localhost:51702/api/";
         public EventsController()
         {
         }
 
         // GET: Staff/Events
         [HttpGet]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            List<Events> events = new List<Events>();
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(Baseurl);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //HTTP GET
+                HttpResponseMessage response = await client.GetAsync("AllEvents");
+                // response.Wait();
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    events = JsonConvert.DeserializeObject<List<Events>>(result);
+                }
+            }
+           
+        return View(events);
         }
 
         // GET: Staff/Events/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int? id)
         {
-            return View();
+            if(id==null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Events events=new Events();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(Baseurl);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //HTTP GET
+                HttpResponseMessage response = await client.GetAsync("DeleteEvent");
+                // response.Wait();
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    events = JsonConvert.DeserializeObject<Events>(result);
+                }
+            }
+            if (events == null)
+                return HttpNotFound();
+            return View(events);
         }
 
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+           return View();
         }
         // GET: Employee  
         public ActionResult EmployeeDetails()
         {
             return this.View();
         }
-        //public async Task<ActionResult> EmpInfoData()
-        //{
-        //    try
-        //    {
-
-        //        return this.Json(await this.restClient.RunAsyncGetAll<Employee, Employee>("api/Employee/EmpDetails"), JsonRequestBehavior.AllowGet);
-        //    }
-        //    catch (ApplicationException ex)
-        //    {
-        //        throw new HttpResponseException(new HttpResponseMessage { StatusCode = HttpStatusCode.BadRequest, ReasonPhrase = ex.Message });
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new HttpResponseException(new HttpResponseMessage { StatusCode = HttpStatusCode.BadGateway, ReasonPhrase = ex.Message });
-        //    }
-        //}
-
-        //public async Task<ActionResult> InsertEmployeeInfo(Employee objEmp)
-        //{
-        //    try
-        //    {
-        //        return this.Json(await this.restClient.RunAsyncPost<Employee, string>("api/Employee/InsertEmpDetails", objEmp));
-        //    }
-        //    catch (ApplicationException ex)
-        //    {
-        //        throw new HttpResponseException(new HttpResponseMessage { StatusCode = HttpStatusCode.BadRequest, ReasonPhrase = ex.Message });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new HttpResponseException(new HttpResponseMessage { StatusCode = HttpStatusCode.BadGateway, ReasonPhrase = ex.Message });
-        //    }
-        //}
-
-
+        
+      
         // GET: Staff/Events/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Events events)
+        public async Task<ActionResult> Create(Events events)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    //rep.Create(events);
-                    //rep.Save();
-                    return RedirectToAction("Index");
+                    using (var client = new HttpClient())
+                    {
+                        client.BaseAddress = new Uri(Baseurl);
+                        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                        var json = JsonConvert.SerializeObject(events);
+                        var stringContent = new StringContent(json, Encoding.UTF8, "application/json");
+                        //HTTP GET
+                        HttpResponseMessage response = await client.GetAsync("CreateEvent");
+                        // response.Wait();
+                        if (response.IsSuccessStatusCode)
+                        {
+                            return RedirectToAction("Index");
+                        }
+                    }
                 }
             }
-            catch(Exception exp)
+            catch (Exception exp)
             {
-                if(exp.GetType() != typeof(DbEntityValidationException))
+                if (exp.GetType() != typeof(DbEntityValidationException))
                 {
-                    if(this.HttpContext.IsDebuggingEnabled)
+                    if (this.HttpContext.IsDebuggingEnabled)
                     {
                         ModelState.AddModelError(String.Empty, exp.ToString());
                     }
