@@ -4,27 +4,24 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using AmazingRace.DAL;
-using AmazingRace.DAL.Interface;
 using AmazingRace.Models.Models;
 
 namespace AmazingRace.Areas.Staff.Controllers
 {
     public class PitStopController : Controller
     {
-        private IRepository<PitStop> rep = null;
 
         public PitStopController()
         {
-            this.rep = new EventsRespository<PitStop>();
+            
         }
 
         // GET: Staff/PitStop
         [HttpGet]
         public ActionResult Index()
         {
-            var PitStop = rep.GetEvents();
-            return View(PitStop);
+            //var PitStop = rep.GetEvents();
+            return View();
         }
 
         // GET: Staff/PitStop/Details/5
@@ -49,8 +46,8 @@ namespace AmazingRace.Areas.Staff.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    rep.Create(PitStop);
-                    rep.Save();
+                    //rep.Create(PitStop);
+                    //rep.Save();
                     return RedirectToAction("Index");
                 }
             }
@@ -75,8 +72,8 @@ namespace AmazingRace.Areas.Staff.Controllers
         // GET: Staff/PitStop/Edit/5
         public ActionResult Edit(int id)
         {
-            var PitStop = rep.GetById(id);
-            return View(PitStop);
+            //var PitStop = rep.GetById(id);
+            return View();
         }
 
         // POST: Staff/PitStop/Edit/5
@@ -87,8 +84,8 @@ namespace AmazingRace.Areas.Staff.Controllers
 
             if (ModelState.IsValid)
             {
-                rep.Update(PitStop);
-                rep.Save();
+                //rep.Update(PitStop);
+                //rep.Save();
                 return RedirectToAction("Index");
             }
             else
@@ -100,8 +97,8 @@ namespace AmazingRace.Areas.Staff.Controllers
         // GET: Staff/PitStop/Delete/5
         public ActionResult Delete(int id)
         {
-            var PitStop = rep.GetById(id);
-            return View(PitStop);
+            //var PitStop = rep.GetById(id);
+            return View();
         }
 
         // POST: Staff/PitStop/Delete/5

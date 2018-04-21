@@ -54,12 +54,10 @@
 </head>
 
 <h2>Index</h2>
-@using (Html.BeginForm("Create", "Events",FormMethod.Get))
-{
-    <div>
-<input type="button" class="createNew" value="Create New" />
-        </div>
-}
+<div>
+    @*<input type="button" class="createNew" value="Create New" />*@
+    @Html.ActionLink("Create New", "Create")
+</div>
 <table class="table">
     <tr>
         <th>

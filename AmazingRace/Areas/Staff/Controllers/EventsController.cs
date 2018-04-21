@@ -2,29 +2,26 @@
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using AmazingRace.DAL;
-using AmazingRace.DAL.Interface;
 using AmazingRace.Models.Models;
 
 namespace AmazingRace.Areas.Staff.Controllers
 {
     public class EventsController : Controller
     {
-        private IRepository<Events> rep = null;
+        EventServiceClient client = new EventServiceClient();
 
         public EventsController()
         {
-            this.rep = new EventsRespository<Events>();
         }
 
         // GET: Staff/Events
         [HttpGet]
         public ActionResult Index()
         {
-            var events = rep.GetEvents();
-            return View(events);
+            return View();
         }
 
         // GET: Staff/Events/Details/5
@@ -38,6 +35,44 @@ namespace AmazingRace.Areas.Staff.Controllers
         {
             return View();
         }
+        // GET: Employee  
+        public ActionResult EmployeeDetails()
+        {
+            return this.View();
+        }
+        //public async Task<ActionResult> EmpInfoData()
+        //{
+        //    try
+        //    {
+
+        //        return this.Json(await this.restClient.RunAsyncGetAll<Employee, Employee>("api/Employee/EmpDetails"), JsonRequestBehavior.AllowGet);
+        //    }
+        //    catch (ApplicationException ex)
+        //    {
+        //        throw new HttpResponseException(new HttpResponseMessage { StatusCode = HttpStatusCode.BadRequest, ReasonPhrase = ex.Message });
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new HttpResponseException(new HttpResponseMessage { StatusCode = HttpStatusCode.BadGateway, ReasonPhrase = ex.Message });
+        //    }
+        //}
+
+        //public async Task<ActionResult> InsertEmployeeInfo(Employee objEmp)
+        //{
+        //    try
+        //    {
+        //        return this.Json(await this.restClient.RunAsyncPost<Employee, string>("api/Employee/InsertEmpDetails", objEmp));
+        //    }
+        //    catch (ApplicationException ex)
+        //    {
+        //        throw new HttpResponseException(new HttpResponseMessage { StatusCode = HttpStatusCode.BadRequest, ReasonPhrase = ex.Message });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new HttpResponseException(new HttpResponseMessage { StatusCode = HttpStatusCode.BadGateway, ReasonPhrase = ex.Message });
+        //    }
+        //}
 
 
         // GET: Staff/Events/Create
@@ -49,8 +84,8 @@ namespace AmazingRace.Areas.Staff.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    rep.Create(events);
-                    rep.Save();
+                    //rep.Create(events);
+                    //rep.Save();
                     return RedirectToAction("Index");
                 }
             }
@@ -75,8 +110,8 @@ namespace AmazingRace.Areas.Staff.Controllers
         // GET: Staff/Events/Edit/5
         public ActionResult Edit(int id)
         {
-            var events = rep.GetById(id);
-            return View(events);
+            //var events = rep.GetById(id);
+            return View();
         }
 
         // POST: Staff/Events/Edit/5
@@ -86,8 +121,8 @@ namespace AmazingRace.Areas.Staff.Controllers
             
                 if (ModelState.IsValid)
                 {
-                    rep.Update(events);
-                    rep.Save();
+                    //rep.Update(events);
+                    //rep.Save();
                     return RedirectToAction("Index");
                 }
             else
@@ -99,8 +134,8 @@ namespace AmazingRace.Areas.Staff.Controllers
         // GET: Staff/Events/Delete/5
         public ActionResult Delete(int id)
         {
-            var events = rep.GetById(id);
-            return View(events);
+            //var events = rep.GetById(id);
+            return View();
         }
 
         // POST: Staff/Events/Delete/5

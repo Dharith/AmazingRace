@@ -212,12 +212,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AmazingRace.Models\AmazingRace.Models.csproj">
-      <Project>{e87d0316-ddaf-447a-b4e0-2044840721ed}</Project>
-      <Name>AmazingRace.Models</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -4,27 +4,23 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using AmazingRace.DAL;
-using AmazingRace.DAL.Interface;
 using AmazingRace.Models.Models;
 
 namespace AmazingRace.Areas.Staff.Controllers
 {
     public class TeamController : Controller
     {
-        private IRepository<Team> rep = null;
 
         public TeamController()
         {
-            this.rep = new EventsRespository<Team>();
         }
 
         // GET: Staff/Team
         [HttpGet]
         public ActionResult Index()
         {
-            var Team = rep.GetEvents();
-            return View(Team);
+            //var Team = rep.GetEvents();
+            return View();
         }
 
         // GET: Staff/Team/Details/5
@@ -49,8 +45,8 @@ namespace AmazingRace.Areas.Staff.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    rep.Create(Team);
-                    rep.Save();
+                    //rep.Create(Team);
+                    //rep.Save();
                     return RedirectToAction("Index");
                 }
             }
@@ -75,8 +71,8 @@ namespace AmazingRace.Areas.Staff.Controllers
         // GET: Staff/Team/Edit/5
         public ActionResult Edit(int id)
         {
-            var Team = rep.GetById(id);
-            return View(Team);
+            //var Team = rep.GetById(id);
+            return View();
         }
 
         // POST: Staff/Team/Edit/5
@@ -87,8 +83,8 @@ namespace AmazingRace.Areas.Staff.Controllers
 
             if (ModelState.IsValid)
             {
-                rep.Update(Team);
-                rep.Save();
+                //rep.Update(Team);
+                //rep.Save();
                 return RedirectToAction("Index");
             }
             else
@@ -97,12 +93,13 @@ namespace AmazingRace.Areas.Staff.Controllers
             }
         }
 
-        // GET: Staff/Team/Delete/5
-        public ActionResult Delete(int id)
-        {
-            var Team = rep.GetById(id);
-            return View(Team);
-        }
+            [HttpGet]
+            // GET: Staff/Team/Delete/5
+            public ActionResult Delete(int id)
+            { 
+        //    var Team = rep.GetById(id);
+            return View();
+            }
 
         // POST: Staff/Team/Delete/5
         [HttpPost]

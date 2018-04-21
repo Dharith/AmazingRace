@@ -46,6 +46,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AmazingRace.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\AmazingRace.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -59,6 +66,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -165,6 +173,7 @@
     <Compile Include="Areas\Staff\StaffAreaRegistration.cs" />
     <Compile Include="Controllers\AmazingRaceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="EventServiceClient.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -251,13 +260,9 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AmazingRace.DAL\AmazingRace.DAL.csproj">
-      <Project>{49098315-eca3-4c72-8e2a-cb6ebf2e5e01}</Project>
-      <Name>AmazingRace.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AmazingRace.Models\AmazingRace.Models.csproj">
-      <Project>{e87d0316-ddaf-447a-b4e0-2044840721ed}</Project>
-      <Name>AmazingRace.Models</Name>
+    <ProjectReference Include="..\WebAPI\WebAPI.csproj">
+      <Project>{7a5f1297-7a2f-4b1b-8a42-72f670a7e7df}</Project>
+      <Name>WebAPI</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
