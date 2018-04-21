@@ -18,6 +18,11 @@ namespace AmazingRace
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            var formatters = GlobalConfiguration.Configuration.Formatters;
+            var jsonFormatter = formatters.JsonFormatter;
+            var serializeSetting = jsonFormatter.SerializerSettings;
+            serializeSetting.Formatting = Newtonsoft.Json.Formatting.Indented;
         }
     }
 }

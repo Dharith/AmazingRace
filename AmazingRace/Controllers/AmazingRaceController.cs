@@ -37,12 +37,14 @@ namespace AmazingRace.Controllers
 
         public ActionResult Events()
         {
-            return View("~/Areas/Staff/Views/Events/index.cshtml");
+            // return View("~/Areas/Staff/Views/Events/index.cshtml");
+            return RedirectToAction("Index", "Events", new { area = "Staff" });
         }
 
         public ActionResult Team()
         {
             return View("~/Areas/Staff/Views/Team/index.cshtml");
+           
         }
     }
 }
