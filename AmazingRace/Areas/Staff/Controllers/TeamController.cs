@@ -4,9 +4,9 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using AmazingRace.Models.Models;
+using WebAPI.Models.Models;
 
-namespace AmazingRace.Areas.Staff.Controllers
+namespace WebAPI.Areas.Staff.Controllers
 {
     public class TeamController : Controller
     {

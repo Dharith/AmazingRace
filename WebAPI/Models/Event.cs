@@ -55,4 +55,13 @@ namespace WebAPI.Models
         public String Name { get; set; }
 
     }
+
+    public class Staff
+    {
+        [Required]
+        [Key]
+        public String Email { get; set; }
+        
+
+    }
 }

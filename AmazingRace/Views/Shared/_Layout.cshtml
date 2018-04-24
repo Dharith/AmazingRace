@@ -84,16 +84,9 @@
                     <li><a class="navbarlinks" asp-area="" asp-controller="AmazingRace" asp-action="Index">Home</a></li>
                     <li><a class="navbarlinks" asp-area="" asp-controller="AmazingRace" asp-action="About">About</a></li>
                     <li><a class="navbarlinks" asp-area="" asp-controller="AmazingRace" asp-action="Contact">Contact</a></li>
-                    @*@if (@Context.Request.Path.Equals("/AmazingRace") || @Context.Request.Path.Equals("/AmazingRace/Index"))
-                    {*@
-                    <li><a id="login_button" class="navbarlinks signin" asp-area="" asp-controller="AmazingRace" asp-action="Login">Login</a></li>
-                    <div id="Display"></div>
-                    @*}*@
-                    @*else
-                    {
-            <li><a class="navbarlinks" asp-area="" asp-controller="AmazingRace" asp-action="SignOut">Sign Out</a></li>
-        }*@
                 </ul>
+                @Html.Partial("_LoginPartial")
+
             </div>
         </div>
     </nav>

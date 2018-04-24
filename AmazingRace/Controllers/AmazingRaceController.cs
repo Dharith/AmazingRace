@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using AmazingRace.Models;
+using WebAPI.Models;
 
-namespace AmazingRace.Controllers
+namespace WebAPI.Controllers
 {
     public class AmazingRaceController : Controller
     {
