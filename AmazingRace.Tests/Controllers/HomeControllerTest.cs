@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WebAPI;
-using WebAPI.Controllers;
+using AmazingRace;
+using AmazingRace.Controllers;
 
-namespace WebAPI.Tests.Controllers
+namespace AmazingRace.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest

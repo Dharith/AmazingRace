@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace WebAPI
+namespace AmazingRace
 {
     public class BundleConfig
     {

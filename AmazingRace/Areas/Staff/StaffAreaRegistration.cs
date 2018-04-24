@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace WebAPI.Areas.Staff
+namespace AmazingRace.Areas.Staff
 {
     public class StaffAreaRegistration : AreaRegistration 
     {

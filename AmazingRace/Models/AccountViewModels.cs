@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace WebAPI.Models
+namespace AmazingRace.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebAPI.Interface
+namespace AmazingRace.Interface
 {
     interface IRepository<T> where T:class
     {

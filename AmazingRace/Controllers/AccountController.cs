@@ -8,13 +8,12 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using WebAPI.Models;
-using WebAPI.Models;
+using AmazingRace.Models;
 using System.Collections.Generic;
 
-namespace WebAPI.Controllers
+namespace AmazingRace.Controllers
 {
-    [Authorize(Roles ="Staff, Supporting Staff")]
+    [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -151,12 +150,12 @@ namespace WebAPI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            bool registrationAccess = false;
+           // bool registrationAccess = false;
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 List<Staff> staffs = new List<Staff>();
-                foreach (var staff in staffs) {
+                /*foreach (var staff in staffs) {
                     if(staff.Email == user.Email)
                     {
                         registrationAccess = true;
@@ -165,9 +164,9 @@ namespace WebAPI.Controllers
                     {
                         registrationAccess = false;
                     }
-                }
-                if (registrationAccess == true)
-                {
+                }*/
+                //if (registrationAccess == true)
+               // {
 
                     var result = await UserManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
@@ -184,11 +183,11 @@ namespace WebAPI.Controllers
                     }
 
                     AddErrors(result);
-                }
-                else
+                //}
+               /* else
                 {
-                    return RedirectToAction("Login");
-                }
+                    return RedirectToAction("Error");
+                }*/
             }
 
             // If we got this far, something failed, redisplay form

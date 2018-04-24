@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http.Headers;
 using System.Web.Http.Description;
-using WebAPI.Areas.HelpPage.ModelDescriptions;
+using AmazingRace.Areas.HelpPage.ModelDescriptions;
 
-namespace WebAPI.Areas.HelpPage.Models
+namespace AmazingRace.Areas.HelpPage.Models
 {
     /// <summary>
     /// The model that represents an API displayed on the help page.

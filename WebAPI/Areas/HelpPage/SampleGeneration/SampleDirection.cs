@@ -1,4 +1,4 @@
-namespace WebAPI.Areas.HelpPage
+namespace AmazingRace.Areas.HelpPage
 {
     /// <summary>
     /// Indicates whether the sample is used for request or response

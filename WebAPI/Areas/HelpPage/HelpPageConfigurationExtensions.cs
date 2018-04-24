@@ -11,10 +11,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using WebAPI.Areas.HelpPage.ModelDescriptions;
-using WebAPI.Areas.HelpPage.Models;
+using AmazingRace.Areas.HelpPage.ModelDescriptions;
+using AmazingRace.Areas.HelpPage.Models;
 
-namespace WebAPI.Areas.HelpPage
+namespace AmazingRace.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

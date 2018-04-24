@@ -6,7 +6,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace WebAPI
+namespace AmazingRace
 {
     public class EventServiceClient : IDisposable
     {

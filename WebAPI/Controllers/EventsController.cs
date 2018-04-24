@@ -9,12 +9,12 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using WebAPI.Context;
-using WebAPI.Interface;
-using WebAPI.Models;
-using WebAPI.Repository;
+using AmazingRace.Context;
+using AmazingRace.Interface;
+using AmazingRace.Models;
+using AmazingRace.Repository;
 
-namespace WebAPI.Controllers
+namespace AmazingRace.Controllers
 {
     [System.Web.Http.RoutePrefix("api/Events")]
     public class EventsController : ApiController

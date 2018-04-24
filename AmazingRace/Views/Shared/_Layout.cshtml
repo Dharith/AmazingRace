@@ -39,6 +39,11 @@
             
         }
 
+            .navbar-nav > li > a {
+                color: #333 !important;
+                background-color: #ffcc00 !important;
+            }
+
             .navbar-nav > li > a:hover {
                 background-color: #ffd11a;
                 color: #333 !important;
@@ -61,6 +66,9 @@
         a {
             cursor:pointer;
         }
+        .leaderBoard_btn {
+            display:none;
+        }
     </style>
 
 
@@ -82,10 +90,9 @@
             <div class="navbar-collapse collapse" style="background-color: #ffcc00;color: #333;">
                 <ul class="nav navbar-nav">
                     <li><a class="navbarlinks" asp-area="" asp-controller="AmazingRace" asp-action="Index">Home</a></li>
-                    <li><a class="navbarlinks" asp-area="" asp-controller="AmazingRace" asp-action="About">About</a></li>
-                    <li><a class="navbarlinks" asp-area="" asp-controller="AmazingRace" asp-action="Contact">Contact</a></li>
+                    @Html.Partial("_LoginPartial")
                 </ul>
-                @Html.Partial("_LoginPartial")
+                
 
             </div>
         </div>
@@ -100,7 +107,7 @@
         <footer class="row">
             <p class="col-md-3 col-xs-3" style="width:auto;margin-left:25px;margin-top:15px;color:#888">&copy; 2018 - Amazing Race</p>
             <div class="col-md-6 col-xs-6"></div>
-            <a class="col-md-3 col-xs-3 leaderBoard_btn" href="~/LeaderBoard">Leader Board</a>
+             <a class="col-md-3 col-xs-3 leaderBoard_btn" href="~/LeaderBoard">Leader Board</a>
         </footer>
     </div>
 
@@ -124,13 +131,7 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
 
-        <script type="text/javascript">
-		$("#login_button").click(function () {
-			$.get('@Url.Action("Login", "AmazingRace")', {}, function (response) {
-				$("#Display").html(response);
-			});
-		});
-        </script>
+
     </environment>
 
     @RenderSection("Scripts", required: false)

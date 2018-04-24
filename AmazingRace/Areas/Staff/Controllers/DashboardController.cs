@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace WebAPI.Areas.Staff.Controllers
+namespace AmazingRace.Areas.Staff.Controllers
 {
     public class DashboardController : Controller
     {

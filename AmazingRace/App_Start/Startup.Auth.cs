@@ -4,11 +4,11 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
-using WebAPI.Models;
+using AmazingRace.Models;
 
-[assembly: OwinStartupAttribute(typeof(WebAPI.Startup))]
+[assembly: OwinStartupAttribute(typeof(AmazingRace.Startup))]
 
-namespace WebAPI
+namespace AmazingRace
 {
     public partial class Startup
     {

@@ -8,10 +8,10 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using WebAPI.Context;
-using WebAPI.Models;
+using AmazingRace.Context;
+using AmazingRace.Models;
 
-namespace WebAPI.Controllers
+namespace AmazingRace.Controllers
 {
     public class PitStopsController : ApiController
     {

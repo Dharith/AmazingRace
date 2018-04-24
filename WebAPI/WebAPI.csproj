@@ -225,10 +225,6 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\PitStopsController.cs" />
     <Compile Include="Controllers\TeamsController.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Repository\EventContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">

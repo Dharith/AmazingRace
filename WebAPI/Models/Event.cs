@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace WebAPI.Models
+namespace AmazingRace.Models
 {
     public class Event
     {
@@ -56,12 +56,5 @@ namespace WebAPI.Models
 
     }
 
-    public class Staff
-    {
-        [Required]
-        [Key]
-        public String Email { get; set; }
-        
-
-    }
+   
 }

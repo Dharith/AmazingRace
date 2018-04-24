@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using WebAPI.Models;
+using AmazingRace.Models;
 
-namespace WebAPI.Controllers
+namespace AmazingRace.Controllers
 {
     [Authorize]
     public class ManageController : Controller

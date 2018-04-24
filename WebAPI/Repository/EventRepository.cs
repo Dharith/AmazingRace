@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using WebAPI.Context;
-using WebAPI.Interface;
+using AmazingRace.Context;
+using AmazingRace.Interface;
 
-namespace WebAPI.Repository
+namespace AmazingRace.Repository
 {
     public class EventRepository<T> : IRepository<T> where T:class
     {

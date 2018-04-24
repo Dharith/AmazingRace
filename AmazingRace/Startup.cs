@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(WebAPI.Startup))]
-namespace WebAPI
+[assembly: OwinStartupAttribute(typeof(AmazingRace.Startup))]
+namespace AmazingRace
 {
     public partial class Startup
     {

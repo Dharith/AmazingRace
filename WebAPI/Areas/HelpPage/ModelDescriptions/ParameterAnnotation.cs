@@ -1,6 +1,6 @@
 using System;
 
-namespace WebAPI.Areas.HelpPage.ModelDescriptions
+namespace AmazingRace.Areas.HelpPage.ModelDescriptions
 {
     public class ParameterAnnotation
     {

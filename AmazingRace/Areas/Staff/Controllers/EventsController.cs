@@ -9,10 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using WebAPI.Models.Models;
+using AmazingRace.Models.Models;
 using Newtonsoft.Json;
 
-namespace WebAPI.Areas.Staff.Controllers
+namespace AmazingRace.Areas.Staff.Controllers
 {
     [RequireHttps]
     public class EventsController : Controller
