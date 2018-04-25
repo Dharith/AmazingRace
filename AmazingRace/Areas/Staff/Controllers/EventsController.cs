@@ -15,7 +15,7 @@ using AmazingRace.Models;
 
 namespace AmazingRace.Areas.Staff.Controllers
 {
-    [RequireHttps]
+    
     public class EventsController : Controller
     {
         ApplicationDbContext rep = new ApplicationDbContext();
