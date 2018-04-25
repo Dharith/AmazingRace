@@ -1,27 +1,81 @@
-﻿@model AmazingRace.Models.Models.PitStop
+﻿@model AmazingRace.Models.PitStops
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Staff/Views/Shared/LayoutDashboard.cshtml";
 }
 
-<h2>Details</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="page animsition">
+        <div class="page-header">
+            <h1 class="page-title">PitStops</h1>
+            <ol class="breadcrumb">
+                <li><a href="../index.html">Home</a></li>
+                <li class="active">PitStop Details</li>
+            </ol>
 
-<div>
-    <h4>PitStop</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
+        <div class="page-content">
+            <div class="panel">
+                <div class="panel-body container-fluid">
+                    <div class="row row-lg">
+                        <div class="col-sm-12 ">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.Name)
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Name }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <div class="col-md-2">
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </div>
+                                    <div class="col-md-10">
+                                        @Html.DisplayFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <div class="col-md-2">
+                                        @Html.DisplayNameFor(model => model.PitStopId)
+                                    </div>
+                                    <div class="col-md-10">
+                                        @Html.DisplayFor(model => model.PitStopId, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <div class="col-md-2">
+                                        @Html.DisplayNameFor(model => model.Location)
+                                    </div>
+                                    <div class="col-md-10">
+                                        @Html.DisplayFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group col-sm-5">
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <a href="~/Staff/PitStop/Edit/@Model.PitStopId" type="button" class="btn btn-success"><i class="icon-save"></i> Edit</a>
+                                        <a href="~/Staff/PitStop/Index" id="cancel"> Back to List</a>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-5">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}

@@ -24,10 +24,17 @@ namespace AmazingRace.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-
+        
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
+        //public System.Data.Entity.DbSet<AmazingRace.Models.Event> Events { get; set; }
+        public DbSet<Events> Events { get; set; }
+        public DbSet<PitStops> PitStops { get; set; }
+
+        public DbSet<Teams> Teams { get; set; }
+
     }
 }

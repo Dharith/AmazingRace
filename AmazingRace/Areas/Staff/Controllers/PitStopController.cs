@@ -1,53 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using AmazingRace.Models;
 using AmazingRace.Models.Models;
 
 namespace AmazingRace.Areas.Staff.Controllers
 {
     public class PitStopController : Controller
     {
-
-        public PitStopController()
-        {
-            
-        }
+        ApplicationDbContext rep = new ApplicationDbContext();
 
         // GET: Staff/PitStop
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(String id)
         {
-            //var PitStop = rep.GetEvents();
-            return View();
+            IEnumerable<PitStops> pitStops = rep.PitStops.ToList();
+            var pitStopList = rep.PitStops.Single(m => m.EventName == id);
+            //List<PitStops> PitStops = rep.PitStops.Find(id);
+            return View(pitStopList);
         }
 
         // GET: Staff/PitStop/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var pitStops = rep.PitStops.Find(id);
+            return View(pitStops);
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(string id)
         {
-            return View();
+            PitStops pitStops = new PitStops();
+            pitStops.EventName = id;
+            return View(pitStops);
         }
 
 
         // GET: Staff/PitStop/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PitStop PitStop)
+        public ActionResult Create(PitStops PitStop)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    //rep.Create(PitStop);
-                    //rep.Save();
+                    rep.PitStops.Add(PitStop);
+                    rep.SaveChanges();
                     return RedirectToAction("Index");
                 }
             }
@@ -72,20 +76,20 @@ namespace AmazingRace.Areas.Staff.Controllers
         // GET: Staff/PitStop/Edit/5
         public ActionResult Edit(int id)
         {
-            //var PitStop = rep.GetById(id);
-            return View();
+            var PitStop = rep.PitStops.Find(id);
+            return View(PitStop);
         }
 
         // POST: Staff/PitStop/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(PitStop PitStop)
+        public ActionResult Edit(PitStops PitStop)
         {
 
             if (ModelState.IsValid)
             {
-                //rep.Update(PitStop);
-                //rep.Save();
+                rep.Entry(PitStop).State = EntityState.Modified;
+                rep.SaveChanges();
                 return RedirectToAction("Index");
             }
             else
@@ -95,25 +99,45 @@ namespace AmazingRace.Areas.Staff.Controllers
         }
 
         // GET: Staff/PitStop/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            //var PitStop = rep.GetById(id);
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PitStops deleteItem = rep.PitStops.Find(id);
+            if (deleteItem == null)
+            {
+                return HttpNotFound();
+            }
+            return View(deleteItem);
         }
 
         // POST: Staff/PitStop/Delete/5
-        [HttpPost]
-        public ActionResult Delete(PitStop PitStop)
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                //yet to be written
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            PitStops deletePitStop = rep.PitStops.Find(id);
+            rep.PitStops.Remove(deletePitStop);
+            rep.SaveChanges();
+            return RedirectToAction("Index");
+
         }
+
+        //// POST: Staff/PitStop/Delete/5
+        //[HttpPost]
+        //public ActionResult Delete(PitStops PitStop)
+        //{
+        //    try
+        //    {
+        //        //yet to be written
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
     }
 }

@@ -8,8 +8,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using AmazingRace.Models;
 using System.Collections.Generic;
+using AmazingRace.Models;
 
 namespace AmazingRace.Controllers
 {
@@ -471,7 +471,7 @@ namespace AmazingRace.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "AmazingRace");
+            return RedirectToAction("Index", "Dashboard", new { area = "Staff" });
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

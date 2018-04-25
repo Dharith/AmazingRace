@@ -9,7 +9,7 @@ namespace AmazingRace.Controllers
 {
     public class AmazingRaceController : Controller
     {
-
+        ApplicationDbContext rep = new ApplicationDbContext();
         // GET: AmazingRace
         public ActionResult Index()
         {
@@ -28,23 +28,30 @@ namespace AmazingRace.Controllers
         }
 
 
-       
+        public ActionResult LeaderBoard()
+        {
+            ViewBag.events = rep.Events.ToList();
+            return View();
+        }
+
+
 
         public ActionResult GotoDashBoard()
         {
-            return View("~/Areas/Staff/Views/Dashboard/index.cshtml");
+            //  return View("~/Areas/Staff/Views/Dashboard/index.cshtml");
+            return RedirectToAction("index", "Dashboard", new { area = "Staff" });
         }
 
         public ActionResult Events()
         {
+            return RedirectToAction("index", "Events", new { area = "Staff" });
             // return View("~/Areas/Staff/Views/Events/index.cshtml");
-            return RedirectToAction("Index", "Events", new { area = "Staff" });
         }
 
         public ActionResult Team()
         {
-            return View("~/Areas/Staff/Views/Team/index.cshtml");
-           
+            return RedirectToAction("index", "Team", new { area = "Staff" });
+            //return View("~/Areas/Staff/Views/Team/index.cshtml");
         }
     }
 }

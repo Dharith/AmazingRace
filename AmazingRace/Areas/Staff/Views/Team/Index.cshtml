@@ -1,31 +1,82 @@
-﻿@model IEnumerable<AmazingRace.Models.Models.Team>
+﻿@model IEnumerable<AmazingRace.Models.Teams>
 
 @{
     ViewBag.Title = "Race";
     Layout = "~/Areas/Staff/Views/Shared/LayoutDashboard.cshtml";
 }
 
-<h2>Index</h2>
+<div class="page animsition">
+    <div class="page-header">
+        <h1 class="page-title">Teams</h1>
+        <ol class="breadcrumb">
+            <li><a href="../index.html">Home</a></li>
+            <li class="active">Teams</li>
+        </ol>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th></th>
-    </tr>
-    @if (Model != null)
-    {
-foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Name }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Name }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Name })
-        </td>
-    </tr>
-}
-    }
+    </div>
+    <div class="page-content">
+        <!-- Panel -->
+        <div class="panel">
 
-</table>
+            <div class="panel-body container-fluid">
+                <div class="row">
+
+                    <div class="form-group">
+                        <div class="form-group col-sm-9">
+                        </div>
+                        <div class="form-group col-sm-3">
+                            @using (Html.BeginForm("Create", "Team", FormMethod.Get))
+                            {
+                                <button type="submit" class="btn btn-success btn-outline"><fa class="fa-plus"></fa> Create New</button>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TeamName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TeamId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Photo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EventEnrolled)
+                        </th>
+                    </tr>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TeamName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TeamId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Photo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EventEnrolled)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.TeamName }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.TeamName }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.TeamName })
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

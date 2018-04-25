@@ -1,19 +1,95 @@
-﻿@model AmazingRace.Models.Models.Team
+﻿@model AmazingRace.Models.Teams
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Staff/Views/Shared/LayoutDashboard.cshtml";
 }
 
-<h2>Details</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="page animsition">
+        <div class="page-header">
+            <h1 class="page-title">Teams</h1>
+            <ol class="breadcrumb">
+                <li><a href="../index.html">Home</a></li>
+                <li class="active">Team Details</li>
+            </ol>
 
-<div>
-    <h4>Team</h4>
-    <hr />
-    <dl class="dl-horizontal">
-    </dl>
-</div>
+        </div>
+
+        <div class="page-content">
+            <div class="panel">
+                <div class="panel-body container-fluid">
+                    <div class="row row-lg">
+                        <div class="col-sm-12 ">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.TeamName)
+
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <div class="col-md-2">
+                                        @Html.DisplayNameFor(model => model.TeamName)
+                                    </div>
+                                    <div class="col-md-10">
+                                        @Html.DisplayFor(model => model.TeamName, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <div class="col-md-2">
+                                        @Html.DisplayNameFor(model => model.TeamId)
+                                    </div>
+                                    <div class="col-md-10">
+                                        @Html.DisplayFor(model => model.TeamId, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <div class="col-md-2">
+                                        @Html.DisplayNameFor(model => model.Photo)
+                                    </div>
+                                    <div class="col-md-10">
+                                        @Html.DisplayFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <div class="col-md-2">
+                                        @Html.DisplayNameFor(model => model.EventEnrolled)
+                                    </div>
+                                    <div class="col-md-10">
+                                        @Html.DisplayFor(model => model.EventEnrolled, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-group col-sm-5">
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group">
+                                        <a href="~/Staff/Teams/Edit/@Model.TeamName" type="button" class="btn btn-success"><i class="icon-save"></i> Edit</a>
+                                        <a href="~/Staff/Teams/Index" id="cancel"> Back to List</a>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-5">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Name }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TeamName }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

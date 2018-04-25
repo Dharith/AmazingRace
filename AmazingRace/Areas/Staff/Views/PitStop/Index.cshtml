@@ -1,34 +1,77 @@
-﻿@model IEnumerable<AmazingRace.Models.Models.PitStop>
+﻿@model IEnumerable<AmazingRace.Models.PitStops>
 
 @{
-    ViewBag.Title = "Teams";
+    ViewBag.Title = "Race";
     Layout = "~/Areas/Staff/Views/Shared/LayoutDashboard.cshtml";
 }
 
-<h2>Index</h2>
+<div class="page animsition">
+    <div class="page-header">
+        <h1 class="page-title">Pitstops</h1>
+        <ol class="breadcrumb">
+            <li><a href="../index.html">Home</a></li>
+            <li class="active">Pitstops</li>
+        </ol>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Location)
-        </th>
-        <th></th>
-    </tr>
+    </div>
+    <div class="page-content">
+        <!-- Panel -->
+        <div class="panel">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Name }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Name }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Name })
-        </td>
-    </tr>
-}
+            <div class="panel-body container-fluid">
+                <div class="row">
 
-</table>
+                    <div class="form-group">
+                        <div class="form-group col-sm-9">
+                        </div>
+                        @*<div class="form-group col-sm-3">
+                                @using (Html.BeginForm("Create", "PitStop", FormMethod.Get))
+                                {
+                                    <button type="submit" class="btn btn-success btn-outline"><fa class="fa-plus"></fa> Create New</button>
+                                }
+                            </div>*@
+                    </div>
+                </div>
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PitStopId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Location)
+                        </th>
+                    </tr>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PitStopId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Location)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.PitStopId }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.PitStopId }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.PitStopId })
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </table>
+                <a href="~/Staff/Events/Index" id="cancel"> Back to Events</a>
+            </div>
+        </div>
+
+    </div>
+</div>

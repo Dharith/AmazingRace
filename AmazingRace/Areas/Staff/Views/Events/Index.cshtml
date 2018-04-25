@@ -5,93 +5,90 @@
     Layout = "~/Areas/Staff/Views/Shared/LayoutDashboard.cshtml";
 }
 
-<head>
-    <style>
-        .page > h2 {
-            color: #333333;
-        }
 
-        table {
-            overflow-y: scroll;
-        }
+<div class="page animsition">
+    <div class="page-header">
+        <h1 class="page-title">Events</h1>
+        <ol class="breadcrumb">
+            <li><a href="../index.html">Home</a></li>
+            <li class="active">Events</li>
+        </ol>
 
-        th {
-            text-align: center;
-            border: 2px solid #ffcc00;
-            background-color: #333333;
-            color: #ffcc00;
-        }
+    </div>
+    <div class="page-content">
+        <!-- Panel -->
+        <div class="panel">
 
-        tbody {
-            border: 2px solid #ffcc00;
-        }
+            <div class="panel-body container-fluid">
+                <div class="row">
 
-        tr {
-            border: 2px solid #ffcc00;
-            color: #333333;
-        }
+                    <div class="form-group">
+                        <div class="form-group col-sm-9">
+                        </div>
+                        <div class="form-group col-sm-3">
+                            @using (Html.BeginForm("Create", "Events", FormMethod.Get))
+                            {
+                                <button type="submit" class="btn btn-success btn-outline"><fa class="fa-plus"></fa> Create New</button>
+                            }
+                        </div>
 
-        .createNew {
-            position: relative;
-            float: right;
-            top: -35px;
-            font-family: 'Roboto Condensed', sans-serif;
-            border: 0px;
-            outline: none;
-            background-color: #ffcc00;
-            width: 150px;
-            padding: 10px;
-            border-radius: 50px;
-        }
+                    </div>
 
-            .createNew > a {
-                text-decoration: none;
-                color: #333333;
-                font-size: 15px;
-                font-weight: bold;
-            }
-    </style>
-</head>
 
-<h2>Index</h2>
-<div>
-    @*<input type="button" class="createNew" value="Create New" />*@
-    @Html.ActionLink("Create New", "Create")
+
+
+                </div>
+
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EventName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Date)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.StartTime)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.City)
+                        </th>
+                    </tr>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EventName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.StartTime)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.City)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.EventId }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.EventId })|
+                                    <a href="#" class="deleteLink" id="@item.EventId"></a>
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.EventId })
+                                    @*@*<a class="delete" href="~/Areas/Staff/Events/Delete/@item.EventId">Delete</a>*@
+                                    @*<a href="#" class="deleteLink" id="@item.EventId">Delete</a>*@
+                                </td>
+                            </tr>
+
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
 
-    </tr>
-    @if (Model != null)
-    {
-        foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StartTime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.City)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.EventId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.EventId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.EventId })
-                </td>
-            </tr>
-        }
-    }
 
-</table>
+
