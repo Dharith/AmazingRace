@@ -14,6 +14,7 @@ namespace AmazingRace.Areas.Staff.Controllers
     public class TeamController : Controller
     {
         ApplicationDbContext rep = new ApplicationDbContext();
+
         // GET: Staff/Team
         [HttpGet]
         public ActionResult Index()
@@ -32,7 +33,33 @@ namespace AmazingRace.Areas.Staff.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            var eventList = GetEvents();
+            Teams team = new Teams();
+            team.EventsList = eventList;
+            ViewBag.eventList = eventList;
+            return View(team);
+        }
+
+        public IEnumerable<SelectListItem> GetEvents()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                List<SelectListItem> eventList = context.Events.AsNoTracking()
+                    .OrderBy(n => n.EventName)
+                        .Select(n =>
+                        new SelectListItem
+                        {
+                            Value = n.EventName.ToString(),
+                            Text = n.EventName
+                        }).ToList();
+                var eventSelection = new SelectListItem()
+                {
+                    Value = null,
+                    Text = "Select Event"
+                };
+                eventList.Insert(0, eventSelection);
+                return new SelectList(eventList, "Value", "Text");
+            }
         }
 
 
@@ -72,6 +99,9 @@ namespace AmazingRace.Areas.Staff.Controllers
         public ActionResult Edit(string id)
         {
             var Teams = rep.Teams.Find(id);
+            var eventList = GetEvents();
+            Teams.EventsList = eventList;
+            ViewBag.eventList = eventList;
             return View(Teams);
         }
 

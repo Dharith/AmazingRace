@@ -11,10 +11,10 @@
     @Html.AntiForgeryToken()
     <div class="page animsition">
         <div class="page-header">
-            <h1 class="page-title">Events</h1>
+            <h1 class="page-title">Teams</h1>
             <ol class="breadcrumb">
                 <li><a href="../index.html">Home</a></li>
-                <li class="active">Events</li>
+                <li class="active">Delete Team</li>
             </ol>
 
         </div>
@@ -32,7 +32,13 @@
                                 <h4>Teams</h4>
                                 <hr />
                                 <dl class="dl-horizontal">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.TeamName)
+                                    </dt>
 
+                                    <dd>
+                                        @Html.DisplayFor(model => model.TeamName)
+                                    </dd>
                                     <dt>
                                         @Html.DisplayNameFor(model => model.Photo)
                                     </dt>
@@ -42,24 +48,19 @@
                                     </dd>
 
                                     <dt>
-                                        @Html.DisplayNameFor(model => model.EventEnrolled)
+                                        @Html.DisplayNameFor(model => model.SelectedEvent)
                                     </dt>
 
                                     <dd>
-                                        @Html.DisplayFor(model => model.EventEnrolled)
+                                        @Html.DisplayFor(model => model.SelectedEvent)
                                     </dd>
 
                                 </dl>
-
-                                @using (Html.BeginForm())
-                                {
-                                    @Html.AntiForgeryToken()
-
+                                
                                     <div class="form-actions no-color">
                                         <input type="submit" value="Delete" class="btn btn-default" /> |
                                         @Html.ActionLink("Back to List", "Index")
                                     </div>
-                                }
                             </div>
                         </div>
                     </div>
