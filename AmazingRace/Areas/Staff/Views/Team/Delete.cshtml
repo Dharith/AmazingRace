@@ -6,66 +6,96 @@
     Layout = "~/Areas/Staff/Views/Shared/LayoutDashboard.cshtml";
 }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <div class="page animsition">
-        <div class="page-header">
-            <h1 class="page-title">Teams</h1>
-            <ol class="breadcrumb">
-                <li><a href="../index.html">Home</a></li>
-                <li class="active">Delete Team</li>
-            </ol>
+<head>
+    <style>
+        .page {
+            height: 80%;
+            width: 70%;
+            margin-left: 50px;
+        }
 
-        </div>
+        h1 {
+            font-family: 'Roboto Condensed', sans-serif;
+            color: #333;
+            text-align: center;
+            margin-bottom: 100px;
+        }
 
-        <div class="page-content">
-            <div class="panel">
-                <div class="panel-body container-fluid">
-                    <div class="row row-lg">
-                        <div class="col-sm-12 ">
+        .row {
+            margin: 25px;
+            font-size: 20px;
+        }
 
-                            <h2>Delete</h2>
+        .heading {
+            font-weight: bold;
+        }
 
-                            <h3>Are you sure you want to delete this?</h3>
-                            <div>
-                                <h4>Teams</h4>
-                                <hr />
-                                <dl class="dl-horizontal">
-                                    <dt>
-                                        @Html.DisplayNameFor(model => model.TeamName)
-                                    </dt>
+        .container {
+            text-align: center;
+        }
 
-                                    <dd>
-                                        @Html.DisplayFor(model => model.TeamName)
-                                    </dd>
-                                    <dt>
-                                        @Html.DisplayNameFor(model => model.Photo)
-                                    </dt>
+        .btn {
+            width: 150px;
+        }
 
-                                    <dd>
-                                        @Html.DisplayFor(model => model.Photo)
-                                    </dd>
+        .save {
+            position: relative;
+            background-color: #ffcc00;
+            color: #333;
+            border-radius: 50px;
+        }
 
-                                    <dt>
-                                        @Html.DisplayNameFor(model => model.SelectedEvent)
-                                    </dt>
+            .save:active, .save:focus {
+                outline: none;
+                border: 0px;
+            }
 
-                                    <dd>
-                                        @Html.DisplayFor(model => model.SelectedEvent)
-                                    </dd>
+        .cancel {
+            background-color: #333;
+            color: #ffcc00;
+            border-radius: 50px;
+        }
 
-                                </dl>
-                                
-                                    <div class="form-actions no-color">
-                                        <input type="submit" value="Delete" class="btn btn-default" /> |
-                                        @Html.ActionLink("Back to List", "Index")
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            .cancel:active, .cancel:focus, .cancel:hover {
+                color: #ffcc00;
+                outline: none;
+                border: 0px;
+            }
+    </style>
+</head>
+
+<body>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="container">
+
+            <h1>Team - Delete</h1>
+
+            <div class="row">
+                <div class="col-xs-6 heading"> @Html.DisplayNameFor(model => model.TeamName)</div>
+                <div class="col-xs-6">@Html.DisplayFor(model => model.TeamName)</div>
             </div>
+            <div class="row">
+                <div class="col-xs-6 heading"> @Html.DisplayNameFor(model => model.Photo)</div>
+                <div class="col-xs-6">@Html.DisplayFor(model => model.Photo)</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 heading"> @Html.DisplayNameFor(model => model.EventEnrolled)</div>
+                <div class="col-xs-6">@Html.DisplayFor(model => model.EventEnrolled)</div>
+            </div>
+            
+            <div class="form-group row" style="padding-top:25px;">
+                <div class="col-xs-2"></div>
+                <div class="col-xs-4"><button type="submit" class="btn save"><i class="icon-save"></i> Delete</button></div>
+                <div class="col-xs-4"><a href="~/Staff/Team/Index" type="button" class="btn cancel " id="cancel"> Cancel</a></div>
+                <div class="col-xs-2"></div>
+
+            </div>
+
         </div>
-    </div>
-}
+    }
+
+</body>

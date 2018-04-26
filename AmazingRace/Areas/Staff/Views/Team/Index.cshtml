@@ -105,18 +105,19 @@
         <table class="table">
             <tr>
                 <th>
-                    Team Name
+                    @Html.DisplayNameFor(model => model.TeamName)
                 </th>
                 <th>
-                    Photo
+                    @Html.DisplayNameFor(model => model.Photo)
                 </th>
                 <th>
-                    Enrolled Events
+                    @Html.DisplayNameFor(model => model.EventEnrolled)
                 </th>
+
                 <th>
                     Action
                 </th>
-              
+
             </tr>
             @if (Model != null)
         {
@@ -130,7 +131,7 @@
                         @Html.DisplayFor(modelItem => item.Photo)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.EventEnrolled)
+                        @Html.DisplayFor(modelItem => item.SelectedEvent)
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.TeamName }) |

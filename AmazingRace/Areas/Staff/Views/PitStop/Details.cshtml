@@ -5,77 +5,104 @@
     Layout = "~/Areas/Staff/Views/Shared/LayoutDashboard.cshtml";
 }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <div class="page animsition">
-        <div class="page-header">
-            <h1 class="page-title">PitStops</h1>
-            <ol class="breadcrumb">
-                <li><a href="../index.html">Home</a></li>
-                <li class="active">PitStop Details</li>
-            </ol>
+<head>
+    <style>
+        .page {
+            height: 80%;
+            width: 70%;
+            margin-left: 50px;
+        }
 
-        </div>
+        h1 {
+            font-family: 'Roboto Condensed', sans-serif;
+            color: #333;
+            text-align: center;
+            margin-bottom: 100px;
+        }
 
-        <div class="page-content">
-            <div class="panel">
-                <div class="panel-body container-fluid">
-                    <div class="row row-lg">
-                        <div class="col-sm-12 ">
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            @Html.HiddenFor(model => model.Name)
+        .row {
+            margin: 25px;
+            font-size: 20px;
+        }
 
-                            <div class="row">
-                                <div class="form-group col-sm-12">
-                                    <div class="col-md-2">
-                                        @Html.DisplayNameFor(model => model.Name)
-                                    </div>
-                                    <div class="col-md-10">
-                                        @Html.DisplayFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-sm-12">
-                                    <div class="col-md-2">
-                                        @Html.DisplayNameFor(model => model.PitStopId)
-                                    </div>
-                                    <div class="col-md-10">
-                                        @Html.DisplayFor(model => model.PitStopId, new { htmlAttributes = new { @class = "form-control" } })
-                                    </div>
-                                </div>
-                            </div>
+        .heading {
+            font-weight: bold;
+        }
 
-                            <div class="row">
-                                <div class="form-group col-sm-12">
-                                    <div class="col-md-2">
-                                        @Html.DisplayNameFor(model => model.Location)
-                                    </div>
-                                    <div class="col-md-10">
-                                        @Html.DisplayFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-group col-sm-5">
-                                </div>
+        .container {
+            text-align: center;
+        }
 
-                                <div class="row">
-                                    <div class="form-group">
-                                        <a href="~/Staff/PitStop/Edit/@Model.PitStopId" type="button" class="btn btn-success"><i class="icon-save"></i> Edit</a>
-                                        <a href="~/Staff/PitStop/Index" id="cancel"> Back to List</a>
-                                    </div>
-                                </div>
-                                <div class="form-group col-sm-5">
-                                </div>
-                            </div>
+        .btn {
+            width: 150px;
+        }
 
-                        </div>
-                    </div>
+        .save {
+            position: relative;
+            background-color: #ffcc00;
+            color: #333;
+            border-radius: 50px;
+        }
+
+            .save:active, .save:focus {
+                outline: none;
+                border: 0px;
+            }
+
+        .cancel {
+            background-color: #333;
+            color: #ffcc00;
+            border-radius: 50px;
+        }
+
+            .cancel:active, .cancel:focus, .cancel:hover {
+                color: #ffcc00;
+                outline: none;
+                border: 0px;
+            }
+    </style>
+</head>
+
+
+<body>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="container">
+
+            <h1>Event - Details</h1>
+
+            <div class="row">
+                <div class="col-xs-6 heading"> @Html.DisplayNameFor(model => model.Name)</div>
+                <div class="col-xs-6">@Html.DisplayFor(model => model.Name)</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 heading"> @Html.DisplayNameFor(model => model.PitStopId)</div>
+                <div class="col-xs-6">@Html.DisplayFor(model => model.PitStopId)</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 heading"> @Html.DisplayNameFor(model => model.Location)</div>
+                <div class="col-xs-6">@Html.DisplayFor(model => model.Location)</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 heading"> @Html.DisplayNameFor(model => model.EventName)</div>
+                <div class="col-xs-6">@Html.DisplayFor(model => model.EventName)</div>
+            </div>
+            <div class="form-group row" style="padding-top:50px;">
+                <div class="col-xs-6">
+                    <a href="~/Staff/PitStop/Edit/@Model.PitStopId" type="button" class="btn save"><i class="icon-save"></i> Edit</a>
                 </div>
+                <div class="col-xs-6">
+                    <a href="~/Staff/Events/Index" class="btn cancel" id="cancel"> Back to List</a>
+                </div>
+
+
             </div>
 
         </div>
-    </div>
-}
+    }
+
+
+</body>
