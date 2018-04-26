@@ -7,10 +7,11 @@
 
 <head>
 
+
     <style>
         .page {
             height: 80%;
-            width: 60%;
+            width: 70%;
             margin-left: 50px;
         }
 
@@ -63,7 +64,30 @@
 
         th {
             text-align: center;
+            border: 2px solid #333;
+            border-top: 2px solid #333 !important;
+            background-color: #ffcc00;
         }
+
+        table {
+            width: 500px;
+            table-layout: auto;
+            border: none;
+        }
+
+        td {
+            border: 2px solid #333;
+        }
+
+            td > a {
+                color: #333;
+                font-weight: bold;
+                text-decoration: underline;
+            }
+
+                td > a:hover, td > a:active, td > a:focus {
+                    color: #333;
+                }
     </style>
 
 </head>
@@ -87,6 +111,9 @@
                 </th>
                 <th>
                     Location
+                </th>
+                <th>
+                    Action
                 </th>
 
             </tr>
