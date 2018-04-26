@@ -5,72 +5,120 @@
     Layout = "~/Areas/Staff/Views/Shared/LayoutDashboard.cshtml";
 }
 
-<div class="page animsition">
-    <div class="page-header">
-        <h1 class="page-title">Teams</h1>
-        <ol class="breadcrumb">
-            <li><a href="../index.html">Home</a></li>
-            <li class="active">Teams</li>
-        </ol>
 
+<head>
+
+    <style>
+        .page {
+            height: 80%;
+            width: 60%;
+            margin-left: 50px;
+        }
+
+        h1 {
+            font-family: 'Roboto Condensed', sans-serif;
+            color: #333;
+            text-align: center;
+        }
+
+        hr {
+            padding-top: 25px;
+            border-bottom: 1px solid #333;
+            margin-right: 0px !important;
+        }
+
+        th {
+            border-top: 0px !important;
+        }
+
+        .btn {
+            height: 40px;
+            width: 40px;
+            position: relative;
+            float: right;
+            right: 50px;
+            top: -25px;
+            color: #333;
+            background-color: #ffcc00;
+            font-size: 25px;
+            text-align: center;
+            border-radius: 100%;
+            border: 2px solid #333;
+        }
+
+            .btn > i {
+                position: absolute;
+                top: 30%;
+                left: 50%;
+                height: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .btn:focus, .btn:active {
+                outline: none;
+            }
+
+        .container {
+            text-align: center;
+        }
+
+        th {
+            text-align:center;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Teams</h1>
+        @using (Html.BeginForm("Create", "Team", FormMethod.Get))
+        {
+            <button type="submit" class="btn"><i class="ion-android-add"></i></button>
+        }
+        <hr />
+
+        <table class="table">
+            <tr>
+                <th>
+                    Team Name
+                </th>
+                <th>
+                    Photo
+                </th>
+                <th>
+                    Enrolled Events
+                </th>
+              
+            </tr>
+            @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeamName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Photo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EventEnrolled)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.TeamName }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.TeamName }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.TeamName })
+                    </td>
+                </tr>
+
+        }
+    }
+        </table>
     </div>
-    <div class="page-content">
-        <!-- Panel -->
-        <div class="panel">
+</body>
 
-            <div class="panel-body container-fluid">
-                <div class="row">
+    
 
-                    <div class="form-group">
-                        <div class="form-group col-sm-9">
-                        </div>
-                        <div class="form-group col-sm-3">
-                            @using (Html.BeginForm("Create", "Team", FormMethod.Get))
-                            {
-                                <button type="submit" class="btn btn-success btn-outline"><fa class="fa-plus"></fa> Create New</button>
-                            }
-                        </div>
-                    </div>
-                </div>
-
-                <table class="table">
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.TeamName)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Photo)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.EventEnrolled)
-                        </th>
-                    </tr>
-                    @if (Model != null)
-                    {
-                        foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TeamName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Photo)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.EventEnrolled)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.TeamName }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.TeamName }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.TeamName })
-                                </td>
-                            </tr>
-                        }
-                    }
-
-                </table>
-
-            </div>
-        </div>
-    </div>
-</div>
+  
+    

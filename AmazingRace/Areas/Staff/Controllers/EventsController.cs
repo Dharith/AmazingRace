@@ -25,7 +25,7 @@ namespace AmazingRace.Areas.Staff.Controllers
         public ActionResult Index()
         {
             var events = rep.Events.ToList();
-            return View(events);
+            return View(events); 
         }
 
         // GET: Staff/Events/Details/5
