@@ -12,10 +12,19 @@ namespace AmazingRace.Models
     public class Events
     {
         [Key]
+        [Required]
         public int EventId { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
         public System.DateTime Date { get; set; }
+
+        [Required]
+        [DataType(DataType.Time)]
         public System.DateTime StartTime { get; set; }
         public string City { get; set; }
+
+        [Required]
         public string EventName { get; set; }
 
         public List<PitStops> PitStops;
@@ -32,9 +41,7 @@ namespace AmazingRace.Models
 
     public class Teams
     {
-
-        public int TeamId { get; set; }
-
+        
         [Key]
         public string TeamName { get; set; }
         public string Photo { get; set; }

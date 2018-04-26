@@ -8,7 +8,7 @@
 
 <div class="page animsition">
     <div class="page-header">
-        <h1 class="page-title">Events</h1>
+        <h1 class="page-title">Race</h1>
         <ol class="breadcrumb">
             <li><a href="../index.html">Home</a></li>
             <li class="active">Events</li>
@@ -20,24 +20,6 @@
         <div class="panel">
 
             <div class="panel-body container-fluid">
-                <div class="row">
-
-                    <div class="form-group">
-                        <div class="form-group col-sm-9">
-                        </div>
-                        <div class="form-group col-sm-3">
-                            @using (Html.BeginForm("Create", "Events", FormMethod.Get))
-                            {
-                                <button type="submit" class="btn btn-success btn-outline"><fa class="fa-plus"></fa> Create New</button>
-                            }
-                        </div>
-
-                    </div>
-
-
-
-
-                </div>
 
 
                 <table class="table">
@@ -73,10 +55,7 @@
                                     @Html.DisplayFor(modelItem => item.City)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.EventId }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.EventId })|
-                                    <a href="#" class="deleteLink" id="@item.EventId"></a>
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.EventId })
+                                    @Html.ActionLink("View Simulatio of the events", "Simulation") 
                                     @*@*<a class="delete" href="~/Areas/Staff/Events/Delete/@item.EventId">Delete</a>*@
                                     @*<a href="#" class="deleteLink" id="@item.EventId">Delete</a>*@
                                 </td>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using AmazingRace.Hubs;
 
 [assembly: OwinStartupAttribute(typeof(AmazingRace.Startup))]
 namespace AmazingRace
@@ -9,6 +10,8 @@ namespace AmazingRace
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            FileWatcher.init();
+            app.MapSignalR();
         }
     }
 }

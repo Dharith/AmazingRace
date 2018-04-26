@@ -94,7 +94,7 @@ namespace AmazingRace.Areas.Staff.Controllers
         }
 
         // GET: Staff/PitStop/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(string id)
         {
             if (id == null)
             {
@@ -111,7 +111,7 @@ namespace AmazingRace.Areas.Staff.Controllers
         // POST: Staff/PitStop/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
             Teams deleteTeam = rep.Teams.Find(id);
             rep.Teams.Remove(deleteTeam);
