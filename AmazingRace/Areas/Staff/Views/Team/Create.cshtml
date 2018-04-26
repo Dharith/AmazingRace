@@ -51,10 +51,10 @@
 
                             <div class="row">
                                 <div class="form-group col-sm-12">
-                                    @Html.LabelFor(model => model.EventEnrolled, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.LabelFor(x => Model.SelectedEvent, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
-                                        @*@Html.DropDownListFor(model => model.EventEnrolled, new { @class = "form-control" })*@
-                                        @Html.ValidationMessageFor(model => model.EventEnrolled, "", new { @class = "text-danger" })
+                                        @Html.DropDownListFor(x => Model.SelectedEvent, new SelectList(ViewBag.eventList, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Event" })
+                                        @Html.ValidationMessageFor(x => x.SelectedEvent, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                             </div>
@@ -78,4 +78,5 @@
         </div>
     </div>
 }
+
 

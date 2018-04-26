@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace AmazingRace.Models
 {
@@ -47,6 +48,9 @@ namespace AmazingRace.Models
         public string Photo { get; set; }
         public string EventEnrolled { get; set; }
 
-        public List<Events> Events { get; set; }
+        [Required]
+        [Display(Name = "Event")]
+        public string SelectedEvent { get; set; }
+        public IEnumerable<SelectListItem> EventsList { get; set; }
     }
-}
+   }
