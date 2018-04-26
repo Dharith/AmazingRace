@@ -10,6 +10,7 @@ namespace AmazingRace.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = false;
         }
 
         protected override void Seed(AmazingRace.Models.ApplicationDbContext context)

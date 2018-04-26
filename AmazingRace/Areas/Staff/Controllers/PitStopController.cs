@@ -20,9 +20,15 @@ namespace AmazingRace.Areas.Staff.Controllers
         public ActionResult Index(String id)
         {
             IEnumerable<PitStops> pitStops = rep.PitStops.ToList();
-            var pitStopList = rep.PitStops.Single(m => m.EventName == id);
-            //List<PitStops> PitStops = rep.PitStops.Find(id);
-            return View(pitStopList);
+            if (id != null)
+            {
+                var pitStopList = (from p in pitStops
+                                   where p.EventName == id
+                                   select p).ToList();
+                //List<PitStops> PitStops = rep.PitStops.Find(id);
+                return View(pitStopList);
+            }
+            return View();
         }
 
         // GET: Staff/PitStop/Details/5
