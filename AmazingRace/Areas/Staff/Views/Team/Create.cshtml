@@ -5,32 +5,78 @@
     Layout = "~/Areas/Staff/Views/Shared/LayoutDashboard.cshtml";
 }
 
+<head>
+    <style>
+        .panel {
+            background-color: inherit;
+            border: 0px;
+            box-shadow: none;
+        }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+        .row {
+            margin-bottom: 25px;
+        }
 
-    <div class="page animsition">
-        <div class="page-header">
-            <h1 class="page-title">Teams</h1>
-            <ol class="breadcrumb">
-                <li><a href="../index.html">Home</a></li>
-                <li class="active">Create Team</li>
-            </ol>
+        input {
+            border-radius: 25px !important;
+        }
 
-        </div>
+            input:active, input:focus {
+                border-color: #ffcc00 !important;
+                border: 1px solid #ffcc00 !important;
+                outline: none;
+                box-shadow: inset 0 1px 1px #ffcc00, 0 0 8px #ffd800 !important;
+            }
 
-        <div class="page-content">
-            <div class="panel">
-                <div class="panel-body container-fluid">
-                    <div class="row row-lg">
-                        <div class="col-sm-12 ">
+        .btn {
+            width: 150px;
+        }
+
+        .save {
+            position: relative;
+            float: left;
+            left: -110px;
+            background-color: #ffcc00;
+            color: #333;
+            border-radius: 50px;
+        }
+
+            .save:active, .save:focus {
+                outline: none;
+                border: 0px;
+            }
+
+        .cancel {
+            background-color: #333;
+            color: #ffcc00;
+            border-radius: 50px;
+        }
+
+            .cancel:active, .cancel:focus, .cancel:hover {
+                color: #ffcc00;
+                outline: none;
+                border: 0px;
+            }
+    </style>
+</head>
 
 
-                            <div class="row">
-                                <div class="form-group col-sm-12">
-                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                    <div class="form-group">
+
+<body>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        <div class="container">
+            <div class="page-content">
+                <div class="panel">
+                    <div class="panel-body container-fluid">
+                        <div class="row row-lg">
+                            <div class="col-sm-12 ">
+                                <div class="row">
+                                    <div class="form-group col-sm-12">
                                         @Html.LabelFor(model => model.TeamName, htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
                                             @Html.EditorFor(model => model.TeamName, new { htmlAttributes = new { @class = "form-control" } })
@@ -38,45 +84,47 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-sm-12">
-                                    @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+                                <div class="row">
+                                    <div class="form-group col-sm-12">
+                                        @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="form-group col-sm-12">
-                                    @Html.LabelFor(x => Model.SelectedEvent, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.DropDownListFor(x => Model.SelectedEvent, new SelectList(ViewBag.eventList, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Event" })
-                                        @Html.ValidationMessageFor(x => x.SelectedEvent, "", new { @class = "text-danger" })
+                                <div class="row">
+                                    <div class="form-group col-sm-12">
+                                        @Html.LabelFor(model => model.EventEnrolled, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.EventEnrolled, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.EventEnrolled, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-group col-sm-5">
                                 </div>
 
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-success"><i class="icon-save"></i> Save</button>
-                                    <a href="~/Staff/Teams/Index" type="button" class="btn btn-danger btn-outline" id="cancel"> Cancel</a>
-                                </div>
-                                <div class="form-group col-sm-5">
-                                </div>
-                            </div>
+                                    <div class="form-group col-sm-5">
+                                    </div>
 
+                                    <div class="form-group">
+                                        <button type="submit" class="btn save"> Save</button>
+                                        <a href="~/Staff/Team/Index" type="button" class="btn cancel" id="cancel"> Cancel</a>
+                                    </div>
+                                    <div class="form-group col-sm-5">
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
         </div>
-    </div>
-}
 
+    }
+
+</body>
 

@@ -6,7 +6,133 @@
 }
 
 
-<div class="page animsition">
+<head>
+
+    <style>
+        .page {
+            height:80%;
+            width:60%;
+            margin-left:50px;
+        }
+        h1 {
+            font-family: 'Roboto Condensed', sans-serif;
+            color: #333;
+            text-align: center;
+        }
+
+        hr {
+            padding-top:25px;
+            border-bottom: 1px solid #333;
+            margin-right:0px !important;
+            
+        }
+
+        th {
+            border-top: 0px !important;
+        }
+
+        .btn {
+            height:40px;
+            width:40px;
+            position:relative;
+            float: right;
+            right:50px;
+            top:-25px;
+            color: #333;
+            background-color: #ffcc00;
+            font-size:25px;
+            text-align:center;
+            border-radius:100%;
+            border: 2px solid #333;
+        }
+            .btn > i {
+                position: absolute;
+                top: 30%;
+                left: 50%;
+                height: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+        .btn:focus, .btn:active {
+            outline: none;
+        }
+        .container {
+            text-align:center;
+        }
+
+        th {
+            text-align: center;
+        }
+
+        .table {
+            position:absolute;
+            left:-50px;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Events</h1>
+        @using (Html.BeginForm("Create", "Events", FormMethod.Get))
+        {
+            <button type="submit" class="btn"><i class="ion-android-add"></i></button>
+        }
+        <hr />
+
+        <table class="table">
+            <tr>
+                <th>
+                    Event Name
+                </th>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Start Time
+                </th>
+                <th>
+                    City
+                </th>
+            </tr>
+            @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EventName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.EventId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.EventId })|
+                        <a href="#" class="deleteLink" id="@item.EventId"></a>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.EventId })
+                        @*@*<a class="delete" href="~/Areas/Staff/Events/Delete/@item.EventId">Delete</a>*@
+                        @*<a href="#" class="deleteLink" id="@item.EventId">Delete</a>*@
+                    </td>
+                </tr>
+
+        }
+    }
+        </table>
+    </div>
+</body>
+
+
+<!----div class="page animsition">
     <div class="page-header">
         <h1 class="page-title">Events</h1>
         <ol class="breadcrumb">
@@ -16,7 +142,7 @@
 
     </div>
     <div class="page-content">
-        <!-- Panel -->
+         Panel 
         <div class="panel">
 
             <div class="panel-body container-fluid">
@@ -26,7 +152,7 @@
                         <div class="form-group col-sm-9">
                         </div>
                         <div class="form-group col-sm-3">
-                            @using (Html.BeginForm("Create", "Events", FormMethod.Get))
+                           @using (Html.BeginForm("Create", "Events", FormMethod.Get))
                             {
                                 <button type="submit" class="btn btn-success btn-outline"><fa class="fa-plus"></fa> Create New</button>
                             }
@@ -40,55 +166,10 @@
                 </div>
 
 
-                <table class="table">
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.EventName)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Date)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.StartTime)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.City)
-                        </th>
-                    </tr>
-                    @if (Model != null)
-                    {
-                        foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.EventName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Date)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.StartTime)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.City)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.EventId }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.EventId })|
-                                    <a href="#" class="deleteLink" id="@item.EventId"></a>
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.EventId })
-                                    @*@*<a class="delete" href="~/Areas/Staff/Events/Delete/@item.EventId">Delete</a>*@
-                                    @*<a href="#" class="deleteLink" id="@item.EventId">Delete</a>*@
-                                </td>
-                            </tr>
-
-                        }
-                    }
-                </table>
             </div>
         </div>
     </div>
-</div>
+</!--div>
 
 
 

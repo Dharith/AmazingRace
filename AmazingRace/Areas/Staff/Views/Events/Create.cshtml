@@ -3,80 +3,134 @@
     ViewBag.Title = "Create";
     Layout = "~/Areas/Staff/Views/Shared/LayoutDashboard.cshtml";
 }
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <div class="page animsition">
-        <div class="page-header">
-            <h1 class="page-title">Events</h1>
-            <ol class="breadcrumb">
-                <li><a href="../index.html">Home</a></li>
-                <li class="active">Create Events</li>
-            </ol>
 
-        </div>
+<head>
+    <style>
+        .panel {
+            background-color: inherit;
+            border: 0px;
+            box-shadow: none;
+        }
+        .row {
+            margin-bottom:25px;
+        }
 
-        <div class="page-content">
-            <div class="panel">
-                <div class="panel-body container-fluid">
-                    <div class="row row-lg">
-                        <div class="col-sm-12 ">
+        input {
+            border-radius:25px !important;
+        }
+            input:active, input:focus {
+                border-color: #ffcc00 !important;
+                border: 1px solid #ffcc00 !important;
+                outline: none;
+                box-shadow: inset 0 1px 1px #ffcc00, 0 0 8px #ffd800 !important;
+            }
+
+            .btn {
+                width:150px;
+            }
+
+            .save {
+                position:relative;
+                float:left;
+                left:-110px;
+                background-color:#ffcc00;
+                color: #333;
+                border-radius:50px;
+            }
+
+            .save:active,.save:focus {
+                outline:none;
+                border:0px;
+            }
+
+            .cancel {
+                background-color:#333;
+                color: #ffcc00;
+                border-radius:50px;
+            }
+
+            .cancel:active,.cancel:focus,.cancel:hover{
+                color: #ffcc00;
+                outline:none;
+                border:0px;
+            }
+
+    </style>
+</head>
 
 
-                            <div class="row">
-                                <div class="form-group col-sm-12">
-                                    @Html.LabelFor(model => model.EventName, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.EventName, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.EventName, "", new { @class = "text-danger" })
+
+<body>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        <div class="container">
+            <div class="page-content">
+                <div class="panel">
+                    <div class="panel-body container-fluid">
+                        <div class="row row-lg">
+                            <div class="col-sm-12 ">
+                                <div class="row">
+                                    <div class="form-group col-sm-12">
+                                        @Html.LabelFor(model => model.EventName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.EventName, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.EventName, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-sm-12">
-                                    @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                                <div class="row">
+                                    <div class="form-group col-sm-12">
+                                        @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-sm-12">
-                                    @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
+                                <div class="row">
+                                    <div class="form-group col-sm-12">
+                                        @Html.LabelFor(model => model.StartTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.StartTime, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.StartTime, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="form-group col-sm-12">
-                                    @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-group col-sm-5">
                                 </div>
 
+                                <div class="row">
+                                    <div class="form-group col-sm-12">
+                                        @Html.LabelFor(model => model.City, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-success"><i class="icon-save"></i> Save</button>
-                                    <a href="~/Staff/Events/Index" type="button" class="btn btn-danger btn-outline" id="cancel"> Cancel</a>
-                                </div>
-                                <div class="form-group col-sm-5">
-                                </div>
-                            </div>
+                                    <div class="form-group col-sm-5">
+                                    </div>
 
+                                    <div class="form-group">
+                                        <button type="submit" class="btn save"> Save</button>
+                                        <a href="~/Staff/Events/Index" type="button" class="btn cancel" id="cancel"> Cancel</a>
+                                    </div>
+                                    <div class="form-group col-sm-5">
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
         </div>
-    </div>
-}
+
+    }
+
+</body>
