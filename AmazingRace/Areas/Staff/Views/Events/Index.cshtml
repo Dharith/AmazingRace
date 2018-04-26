@@ -97,28 +97,26 @@
     <div class="container">
         <h1>Events</h1>
         @using (Html.BeginForm("Create", "Events", FormMethod.Get))
-        {
-            <button type="submit" class="btn"><i class="ion-android-add"></i></button>
-        }
-        
+    {
+        <button type="submit" class="btn"><i class="ion-android-add"></i></button>
+}
+
 
         <table class="table">
             <tr>
                 <th>
-                    Event Name
+                    @Html.DisplayNameFor(model => model.EventName)
                 </th>
                 <th>
-                    Date
+                    @Html.DisplayNameFor(model => model.Date)
                 </th>
                 <th>
-                    Start Time
+                    @Html.DisplayNameFor(model => model.StartTime)
                 </th>
                 <th>
-                    City
+                    @Html.DisplayNameFor(model => model.City)
                 </th>
-                <th>
-                    Action
-                </th>
+                <th>Action</th>
             </tr>
             @if (Model != null)
         {
