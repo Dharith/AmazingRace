@@ -70,28 +70,42 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="container">
+    <div class="container">
 
-            <h1>Event - Delete</h1>
+        <h1>PitStop - Delete</h1>
+        <div class="row">
+            <div class="col-xs-6 heading"> @Html.DisplayNameFor(model => model.PitStopId)</div>
+            <div class="col-xs-6">@Html.DisplayFor(model => model.PitStopId)</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 heading"> @Html.DisplayNameFor(model => model.Name)</div>
+            <div class="col-xs-6">@Html.DisplayFor(model => model.Name)</div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 heading"> @Html.DisplayNameFor(model => model.Location)</div>
+            <div class="col-xs-6">@Html.DisplayFor(model => model.Location)</div>
+        </div>
 
-            <div class="row">
-                <div class="col-xs-6 heading"> @Html.DisplayNameFor(model => model.Name)</div>
-                <div class="col-xs-6">@Html.DisplayFor(model => model.Name)</div>
-            </div>
-            <div class="row">
-                <div class="col-xs-6 heading"> @Html.DisplayNameFor(model => model.Location)</div>
-                <div class="col-xs-6">@Html.DisplayFor(model => model.Location)</div>
-            </div>
-            
-            <div class="form-group row" style="padding-top:25px;">
-                <div class="col-xs-2"></div>
-                <div class="col-xs-4"><button type="submit" class="btn save"><i class="icon-save"></i> Delete</button></div>
-                <div class="col-xs-4"><a href="~/Staff/Events/Index" type="button" class="btn cancel " id="cancel"> Cancel</a></div>
-                <div class="col-xs-2"></div>
-
-            </div>
+        <div class="form-group row" style="padding-top:25px;">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-4"><button type="submit" class="btn save"><i class="icon-save"></i> Delete</button></div>
+            <div class="col-xs-4"><a href="~/Staff/PitStop/Index/@Model.EventName" type="button" class="btn cancel " id="cancel"> Cancel</a></div>
+            <div class="col-xs-2"></div>
 
         </div>
+
+    </div>
     }
 
 </body>
+
+<script type="text/javascript">
+
+        function DisableBackButtonAllBrowsers() {
+            window.history.forward()
+        };
+         DisableBackButtonAllBrowsers();
+        window.onload = DisableBackButtonAllBrowsers;
+         window.onpageshow = function (evts) { if (evts.persisted) DisableBackButtonAllBrowsers(); };
+        window.onunload = function () { void (0) };
+</script>

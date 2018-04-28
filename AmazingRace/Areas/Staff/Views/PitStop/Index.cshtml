@@ -96,51 +96,51 @@
 <body>
     <div class="container">
         <h1>Pitstops</h1>
-        @using (Html.BeginForm("Create", "PitStop", FormMethod.Get))
+        @*@using (Html.BeginForm("Create", "PitStop", FormMethod.Post)
         {
-            <button type="submit" class="btn">Create Pitstop</button>
-        }
-      
+            <button type="submit" class="btn"><i class="ion-android-add"></i></button>
+        }*@
+
 
         <table class="table">
             <tr>
                 <th>
-                    Pit Stop ID
+                    @Html.DisplayNameFor(model => model.PitStopId)
                 </th>
                 <th>
-                    Name
+                    @Html.DisplayNameFor(model => model.Name)
                 </th>
                 <th>
-                    Location
+                    @Html.DisplayNameFor(model => model.Location)
                 </th>
-                <th>
-                    Action
-                </th>
-
+                <th>Action</th>
             </tr>
             @if (Model != null)
-            {
-                foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PitStopId)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Location)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.PitStopId }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.PitStopId }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.PitStopId })
-                        </td>
-                    </tr>
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PitStopId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.PitStopId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.PitStopId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.PitStopId })
+                </td>
+            </tr>
 
-                }
-            }
+}
+}
         </table>
+        <div class="col-xs-2">
+            <a href="~/Staff/Events/Index">Back to Events</a>
+        </div>
     </div>
 </body>

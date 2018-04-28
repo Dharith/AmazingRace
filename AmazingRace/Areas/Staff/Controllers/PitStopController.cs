@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using AmazingRace.Models;
 using AmazingRace.Models.Models;
 
@@ -58,7 +59,7 @@ namespace AmazingRace.Areas.Staff.Controllers
                 {
                     rep.PitStops.Add(PitStop);
                     rep.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", new RouteValueDictionary(new { Id = PitStop.EventName }));
                 }
             }
             catch (Exception exp)
@@ -75,7 +76,7 @@ namespace AmazingRace.Areas.Staff.Controllers
                     }
                 }
             }
-            return View(PitStop);
+            return View(PitStop.EventName);
         }
 
 
@@ -96,7 +97,7 @@ namespace AmazingRace.Areas.Staff.Controllers
             {
                 rep.Entry(PitStop).State = EntityState.Modified;
                 rep.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index",new RouteValueDictionary( new { Id = PitStop.EventName }));
             }
             else
             {
@@ -127,7 +128,7 @@ namespace AmazingRace.Areas.Staff.Controllers
             PitStops deletePitStop = rep.PitStops.Find(id);
             rep.PitStops.Remove(deletePitStop);
             rep.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new RouteValueDictionary(new { Id = deletePitStop.EventName }));
 
         }
 
