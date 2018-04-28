@@ -59,7 +59,7 @@ namespace AmazingRace.Areas.Staff.Controllers
                 {
                     rep.PitStops.Add(PitStop);
                     rep.SaveChanges();
-                    return RedirectToAction("Index", new RouteValueDictionary(new { Id = PitStop.EventName }));
+                    return RedirectToAction("Index","Events", new { area = "Staff" });
                 }
             }
             catch (Exception exp)

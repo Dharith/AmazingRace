@@ -153,12 +153,12 @@ namespace AmazingRace.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                bool registrationAccess = (from u in Context.Roles
-                                           where u.Email == user.Email
-                                           select true);
+                //bool registrationAccess = (from u in Context.Roles
+                //                           where u.Email == user.Email
+                //                           select true);
                 
-                if (registrationAccess == true)
-                {
+                //if (registrationAccess == true)
+                //{
 
                 var result = await UserManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
@@ -175,11 +175,11 @@ namespace AmazingRace.Controllers
                     }
 
                     AddErrors(result);
-               }
-               else
-                {
-                    return RedirectToAction("Error");
-                }
+               //}
+               //else
+               // {
+               //     return RedirectToAction("Error");
+               // }
             }
 
             // If we got this far, something failed, redisplay form

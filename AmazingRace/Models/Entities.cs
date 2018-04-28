@@ -33,10 +33,16 @@ namespace AmazingRace.Models
     public class PitStops
     {
         [Key]
+        [Required]
         public int PitStopId { get; set; }
 
+        [Required]
         public String EventName { get; set; }
+
+        [Required]
         public string Name { get; set; }
+
+        [Required]
         public string Location { get; set; }
     }
 
@@ -44,6 +50,7 @@ namespace AmazingRace.Models
     {
         
         [Key]
+        [Required]
         public string TeamName { get; set; }
         public string Photo { get; set; }
         public string EventEnrolled { get; set; }
