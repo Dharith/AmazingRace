@@ -150,25 +150,17 @@ namespace AmazingRace.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-           // bool registrationAccess = false;
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                List<Staff> staffs = new List<Staff>();
-                /*foreach (var staff in staffs) {
-                    if(staff.Email == user.Email)
-                    {
-                        registrationAccess = true;
-                    }
-                    else
-                    {
-                        registrationAccess = false;
-                    }
-                }*/
-                //if (registrationAccess == true)
-               // {
+                bool registrationAccess = (from u in Context.Roles
+                                           where u.Email == user.Email
+                                           select true);
+                
+                if (registrationAccess == true)
+                {
 
-                    var result = await UserManager.CreateAsync(user, model.Password);
+                var result = await UserManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
@@ -183,11 +175,11 @@ namespace AmazingRace.Controllers
                     }
 
                     AddErrors(result);
-                //}
-               /* else
+               }
+               else
                 {
                     return RedirectToAction("Error");
-                }*/
+                }
             }
 
             // If we got this far, something failed, redisplay form

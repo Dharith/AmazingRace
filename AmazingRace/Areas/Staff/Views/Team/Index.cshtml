@@ -34,17 +34,18 @@
 
         .btn {
             height: 40px;
-            width: 40px;
+            width: 100px;
             position: relative;
             float: right;
             right: 50px;
             top: -25px;
             color: #333;
             background-color: #ffcc00;
-            font-size: 25px;
+            font-size: 15px;
             text-align: center;
-            border-radius: 100%;
+            border-radius: 25px;
             border: 2px solid #333;
+            font-weight:bold;
         }
 
             .btn > i {
@@ -98,7 +99,7 @@
         <h1>Teams</h1>
         @using (Html.BeginForm("Create", "Team", FormMethod.Get))
         {
-            <button type="submit" class="btn"><i class="ion-android-add"></i></button>
+            <button type="submit" class="btn">Create Team</button>
         }
        
 
