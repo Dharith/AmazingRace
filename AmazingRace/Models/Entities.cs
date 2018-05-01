@@ -24,6 +24,7 @@ namespace AmazingRace.Models
         [DataType(DataType.Time)]
         public System.DateTime StartTime { get; set; }
         public string City { get; set; }
+        
 
         [Required]
         public string EventName { get; set; }

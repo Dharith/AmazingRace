@@ -13,12 +13,22 @@ namespace AmazingRace.Areas.Staff.Controllers
         // GET: Staff/Race
         public ActionResult Index()
         {
-
             var events = rep.Events.ToList();
             return View(events);
         }
-        public ActionResult Simulation()
+
+        [HttpGet]
+        public ActionResult Simulation(String eventName)
         {
+            IEnumerable<PitStops> pitStops = rep.PitStops.ToList();
+            if (eventName != null)
+            {
+                var pitStopList = (from p in pitStops
+                                   where p.EventName == eventName
+                                   select p).ToList();
+                //List<PitStops> PitStops = rep.PitStops.Find(id);
+                return View(pitStopList);
+            }
             return View();
         }
 
