@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using AmazingRace.Models;
-using AmazingRace.Models.Models;
 using System.Globalization;
 
 namespace AmazingRace.Areas.Staff.Controllers

@@ -1,0 +1,136 @@
+﻿@model IEnumerable<AmazingRace.Models.Teams>
+
+@{
+    ViewBag.Title = "LeaderTeams";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<head>
+
+
+    <style>
+        .page {
+            height: 80%;
+            width: 70%;
+            margin-left: 50px;
+        }
+
+        h1 {
+            font-family: 'Roboto Condensed', sans-serif;
+            color: #fff;
+            text-align: center;
+        }
+
+        hr {
+            padding-top: 25px;
+            border-bottom: 1px solid #fff;
+            margin-right: 0px !important;
+        }
+
+        th {
+            border-top: 0px !important;
+            color: #fff;
+        }
+
+        .btn {
+            height: 40px;
+            width: 100px;
+            position: relative;
+            float: right;
+            right: 50px;
+            top: -25px;
+            color: #fff;
+            background-color: #ffcc00;
+            font-size: 15px;
+            text-align: center;
+            border-radius: 25px;
+            border: 2px solid #fff;
+            font-weight: bold;
+        }
+
+            .btn > i {
+                position: absolute;
+                top: 30%;
+                left: 50%;
+                height: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .btn:focus, .btn:active {
+                outline: none;
+            }
+
+        .container {
+            text-align: center;
+        }
+
+        th {
+            text-align: center;
+            border: 2px solid #fff;
+            border-top: 2px solid #fff !important;
+            background-color: #ffcc00;
+        }
+
+        table {
+            width: 500px;
+            table-layout: auto;
+            border: none;
+        }
+
+        td {
+            border: 2px solid #fff;
+            color: #fff;
+        }
+
+            td > a {
+                color: #fff;
+                font-weight: bold;
+                text-decoration: underline;
+            }
+
+                td > a:hover, td > a:active, td > a:focus {
+                    color: #fff;
+                }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Teams</h1>
+        @using (Html.BeginForm("Create", "Team", FormMethod.Get))
+        {
+            <button type="submit" class="btn">Create Team</button>
+        }
+
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TeamName)
+                </th>
+                <th>
+                    Ranking
+                </th>
+
+
+            </tr>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TeamName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ranking)
+                        </td>
+                    </tr>
+
+                }
+            }
+        </table>
+    </div>
+</body>

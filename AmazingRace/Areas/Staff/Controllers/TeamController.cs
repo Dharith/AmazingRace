@@ -7,7 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AmazingRace.Models;
-using AmazingRace.Models.Models;
 
 namespace AmazingRace.Areas.Staff.Controllers
 {

@@ -28,10 +28,24 @@ namespace AmazingRace.Controllers
         }
 
 
+        public ActionResult LeaderTeams(string id)
+        {
+            IEnumerable<Teams> teams = rep.Teams.ToList();
+            if (id != null)
+            {
+                var teamList = (from p in teams
+                                   where p.SelectedEvent == id
+                                   select p).ToList();
+                //List<PitStops> PitStops = rep.PitStops.Find(id);
+                return View(teamList);
+            }
+            return View();
+        }
+
         public ActionResult LeaderBoard()
         {
-            ViewBag.events = rep.Events.ToList();
-            return View();
+            var events = rep.Events.ToList();
+            return View(events);
         }
 
 

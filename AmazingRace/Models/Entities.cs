@@ -62,5 +62,8 @@ namespace AmazingRace.Models
         [Display(Name = "Event")]
         public string SelectedEvent { get; set; }
         public IEnumerable<SelectListItem> EventsList { get; set; }
+
+
+        public int Ranking { get; set; }
     }
    }
