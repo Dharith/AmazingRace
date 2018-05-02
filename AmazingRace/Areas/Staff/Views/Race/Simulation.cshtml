@@ -61,11 +61,7 @@
 
         
         var origin = [psmarkers[0].lat, psmarkers[0].lng];
-        var result = [psmarkers[psmarkers.length - 1].lat, psmarkers[psmarkers.length - 1].lng];
-        var i = 0;
-        var numDeltas = 100;
-        var deltaLat = (result[0] - origin[0]) / numDeltas;
-        var deltaLng = (result[1] - origin[1]) / numDeltas;
+        
 
         function beginSimulation() {
 
@@ -95,35 +91,26 @@
                     icon:'/sprint.png'
                 });
                 teamMarkers[t] = marker;
+
             }
+
             
+
+
             for (var i = 0; i < teamMarkers.length; i++) {
-                moveMarker(teamMarkers[i]);
+                var currPos = new google.maps.LatLng(steps[i + 2].start_point.lat(), steps[i + 2].start_point.lng());
+                teamMarkers[i].setPosition(currPos);
                 
-            }
+                
+            } 
+                
+        }
            
             
-        }
-
-
-        function moveMarker(teamMarker) {
-            origin[0] += deltaLat;
-            origin[1] += deltaLng;
-            var latlng = new google.maps.LatLng(origin[0], origin[1]);
-            teamMarker.setPosition(latlng);
-            if (i != numDeltas) {
-                i++;
-                setTimeout(moveMarker, 10);
-            }
-        }
-
-        
-        
-
         
 
 
-
+        
 
         function setTeamMarker(map, count) {
             for (var t = 0; t < count; t++) {
@@ -173,8 +160,8 @@
         }
 
         #map {
-            width: 50%;
-            height: 50%;
+            width: 100%;
+            height: 70%;
         }
 
         #test {
