@@ -59,9 +59,17 @@
 
         }
 
+        
+        var origin = [psmarkers[0].lat, psmarkers[0].lng];
+        var result = [psmarkers[psmarkers.length - 1].lat, psmarkers[psmarkers.length - 1].lng];
+        var i = 0;
+        var numDeltas = 100;
+        var deltaLat = (result[0] - origin[0]) / numDeltas;
+        var deltaLng = (result[1] - origin[1]) / numDeltas;
+
         function beginSimulation() {
 
-           
+
             var mapOptions = {
                 center: new google.maps.LatLng(psmarkers[0].lat, psmarkers[0].lng),
                 zoom: 12,
@@ -78,25 +86,44 @@
                 teams[teams.length] = randomnumber;
             }
             teams = teams.sort();
+            
+            var teamMarkers = [];
             for (var t = 0; t < numofTeams; t++) {
-                for (var j = 1; j < (steps.length)/2; j += 2) {                   
-                    setTeamMarker(map, 0);
-                    sleep(5000).then(() => {
-                        console.log("moving");
-                        var marker = new google.maps.Marker({
-                            position: new google.maps.LatLng(steps[j].start_location.lat(), steps[j].start_location.lng()),
-                            map: map,
-                            icon: '/sprint.png'
-                        });
-                    });
-                }
-                
-               
-                
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(origin[0], origin[1]),
+                    map: map,
+                    icon:'/sprint.png'
+                });
+                teamMarkers[t] = marker;
             }
             
-
+            for (var i = 0; i < teamMarkers.length; i++) {
+                moveMarker(teamMarkers[i]);
+                
+            }
+           
+            
         }
+
+
+        function moveMarker(teamMarker) {
+            origin[0] += deltaLat;
+            origin[1] += deltaLng;
+            var latlng = new google.maps.LatLng(origin[0], origin[1]);
+            teamMarker.setPosition(latlng);
+            if (i != numDeltas) {
+                i++;
+                setTimeout(moveMarker, 10);
+            }
+        }
+
+        
+        
+
+        
+
+
+
 
         function setTeamMarker(map, count) {
             for (var t = 0; t < count; t++) {
