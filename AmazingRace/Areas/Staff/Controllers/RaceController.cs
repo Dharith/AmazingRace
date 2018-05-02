@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using AmazingRace.Models;
+using AmazingRace.Models.Models;
+using System.Globalization;
 
 namespace AmazingRace.Areas.Staff.Controllers
 {
@@ -18,16 +24,53 @@ namespace AmazingRace.Areas.Staff.Controllers
         }
 
         [HttpGet]
-        public ActionResult Simulation(String eventName)
+        public ActionResult Simulation(String id)
         {
             IEnumerable<PitStops> pitStops = rep.PitStops.ToList();
-            if (eventName != null)
+            IEnumerable<Teams> teams = rep.Teams.ToList();
+            var events = rep.Events.ToList();
+            if (id != null)
             {
                 var pitStopList = (from p in pitStops
-                                   where p.EventName == eventName
+                                   where p.EventName == id
                                    select p).ToList();
-                //List<PitStops> PitStops = rep.PitStops.Find(id);
-                return View(pitStopList);
+                var teamList = (from t in teams
+                                where t.SelectedEvent == id
+                                select t).ToList();
+                var query = from e in events
+                            join pitstop in pitStopList on e.EventName equals pitstop.EventName
+                            select new { eventDate = e.Date, eventTime = e.StartTime };
+
+                DateTime date = new DateTime();
+                TimeSpan time = new TimeSpan();
+                
+                foreach (var item in query)
+                {
+
+                    date = item.eventDate.Date;
+                    time = item.eventDate.TimeOfDay;
+                    
+
+                }
+
+                var pitstopMarkers = "[";
+                foreach(var pitstop in pitStopList)
+                {
+                    pitstopMarkers += "{";
+                    pitstopMarkers += string.Format("'location': '{0}',", pitstop.Location);
+                    pitstopMarkers += string.Format("'lat': {0},", pitstop.Latitude);
+                    pitstopMarkers += string.Format("'lng': {0}", pitstop.Longitude);
+                    pitstopMarkers += "},";
+                }
+                pitstopMarkers += "]";
+               
+                ViewBag.TeamCount = teamList.Count;
+                //ViewBag.TeamDetails = teamsDetails;
+                ViewBag.PitStopMarkers = pitstopMarkers;
+                MyViewModel viewModel = new MyViewModel();
+                viewModel.date = date;
+                viewModel.time = time;
+                return View(viewModel);
             }
             return View();
         }
@@ -36,5 +79,7 @@ namespace AmazingRace.Areas.Staff.Controllers
         {
             return View();
         }
+
+        
     }
 }

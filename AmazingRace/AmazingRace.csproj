@@ -223,12 +223,14 @@
     <Compile Include="Models\Entities.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MyViewModel.cs" />
     <Compile Include="Models\Staff.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\location.xml" />
+    <Content Include="checkered-flag.png" />
     <Content Include="Content\bootstrap-extend.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -279,6 +281,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="sprint.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

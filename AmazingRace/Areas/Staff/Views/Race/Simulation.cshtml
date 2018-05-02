@@ -1,5 +1,5 @@
-﻿@model IEnumerable<AmazingRace.Models.PitStops>
-
+﻿@model AmazingRace.Models.MyViewModel
+@using System
 
 
 @{
@@ -10,20 +10,83 @@
 <head>
 
     <script>
-        function initMap() {
-            var uluru = { lat: -25.363, lng: 131.044 };
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 4,
-                center: uluru
+
+        var psmarkers = @Html.Raw(ViewBag.PitStopMarkers);
+        //var teamDetails = @Html.Raw(ViewBag.TeamDetails);
+        var numofTeams = @Html.Raw(ViewBag.TeamCount);
+
+        window.onload = function () {
+
+            var directionsService = new google.maps.DirectionsService();
+            var directionsDisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
+
+            //console.log(numofTeams);
+            var mapOptions = {
+                center: new google.maps.LatLng(psmarkers[0].lat, psmarkers[0].lng),
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var infoWindow = new google.maps.InfoWindow();
+
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            directionsDisplay.setMap(map);
+
+            for (var i = 0; i < psmarkers.length; i++) {
+                var data = psmarkers[i];
+                var LatLng = new google.maps.LatLng(psmarkers[i].lat, psmarkers[i].lng);
+                var marker = new google.maps.Marker({
+                    position: LatLng,
+                    map: map,
+                    title: data.location,
+                    icon: '/checkered-flag.png'
+                });
+                (function (marker, data) {
+                    google.maps.event.addListener(marker, "click", function (e) {
+                        infoWindow.setContent(data.location);
+                        infoWindow.open(map, marker);
+                    });
+                })(marker, data);
+            }
+
+            var request = {
+                origin: new google.maps.LatLng(psmarkers[0].lat, psmarkers[0].lng),
+                destination: new google.maps.LatLng(psmarkers[psmarkers.length - 1].lat, psmarkers[psmarkers.length-1].lng),
+                travelMode: 'WALKING'
+            };
+
+            var steps = [];
+
+            directionsService.route(request, function (result, status) {
+                if (status == 'OK') {
+                    directionsDisplay.setDirections(result);
+                    //console.log(result);
+                    if (result.routes != null) {
+                        steps = result.routes[0].legs[0].steps;
+                    }
+                    console.log(steps);
+
+                }
             });
-            var marker = new google.maps.Marker({
-                position: uluru,
-                map: map
-            });
+            //console.log(numofTeams);
+            for (var t = 0; t < numofTeams; t++) {
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(psmarkers[psmarkers.length - 1].lat, psmarkers[psmarkers.length - 1].lng),
+                    map: map,
+                    icon: '/sprint.png'
+                });
+            }
+
         }
+
+        function beginSimulation() {
+
+        }
+
+       
+
     </script>
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfMIjRBmRAonZmdhDRtV0QnsJqVZkj0qw&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfMIjRBmRAonZmdhDRtV0QnsJqVZkj0qw">
     </script>
     <style>
         .container {
@@ -35,9 +98,12 @@
             height: 50%;
         }
 
+        #test {
+            width: 50%;
+            height: 50%;
+        }
+
         .pitstops {
-            width: 500px;
-            height: 500px;
         }
 
         .row {
@@ -49,16 +115,33 @@
 
 <body>
     <div class="container">
-        <div id="map">
+        <div id="map"></div>
+        <div>
 
-        </div>
-        <div class="row">
-            @if (Model != null) {
-                foreach(var item in Model) {
-                    <div>@Html.DisplayFor(modelItem => item.Name)</div>
-                }   
+            @if (Model != null)
+            {
+                var eventDate = Model.date;
+                var eventTime = Model.time;
+                DateTime today = DateTime.Today;
+                var result = DateTime.Compare(today.Date, eventDate.Date);
+                if (result == 0 || result > 0 )
+                {
+                    <button click="beginSimulation()">View Live Simulation of the event</button>
+                }
+
             }
 
+
+
+
+
+
+            <div id="test"></div>
+
+
         </div>
+
+
+
     </div>
 </body>
