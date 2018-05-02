@@ -57,7 +57,6 @@ namespace AmazingRace.Models
         [Required]
         public string TeamName { get; set; }
         public string Photo { get; set; }
-        public string EventEnrolled { get; set; }
 
         [Required]
         [Display(Name = "Event")]
