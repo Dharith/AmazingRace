@@ -12,9 +12,9 @@
     <script>
 
         var psmarkers = @Html.Raw(ViewBag.PitStopMarkers);
-        //var teamDetails = @Html.Raw(ViewBag.TeamDetails);
         var numofTeams = @Html.Raw(ViewBag.TeamCount);
-
+        var steps = [];
+        var map;
         window.onload = function () {
 
             var directionsService = new google.maps.DirectionsService();
@@ -28,9 +28,87 @@
             };
             var infoWindow = new google.maps.InfoWindow();
 
-            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            map = new google.maps.Map(document.getElementById("map"), mapOptions);
             directionsDisplay.setMap(map);
 
+            setPitStopMarkers(map, psmarkers);
+            
+
+            var request = {
+                origin: new google.maps.LatLng(psmarkers[0].lat, psmarkers[0].lng),
+                destination: new google.maps.LatLng(psmarkers[psmarkers.length - 1].lat, psmarkers[psmarkers.length-1].lng),
+                travelMode: 'WALKING'
+            };
+
+            
+
+            directionsService.route(request, function (result, status) {
+                if (status == 'OK') {
+                    directionsDisplay.setDirections(result);
+                    //console.log(result);
+                    if (result.routes != null) {
+                        steps = result.routes[0].legs[0].steps;
+                    }
+                    console.log(steps);
+
+                }
+            });
+            //console.log(numofTeams);
+
+            setTeamMarker(map, numofTeams);
+
+        }
+
+        function beginSimulation() {
+
+           
+            var mapOptions = {
+                center: new google.maps.LatLng(psmarkers[0].lat, psmarkers[0].lng),
+                zoom: 12,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+            setTeamMarker(map, 0);
+            setPitStopMarkers(map, psmarkers);
+            var teams = [];
+            while (teams.length < numofTeams) {
+                var randomnumber = Math.floor(Math.random() * numofTeams) + 1;
+                if (teams.indexOf(randomnumber) > -1) continue;
+                teams[teams.length] = randomnumber;
+            }
+            teams = teams.sort();
+            for (var t = 0; t < numofTeams; t++) {
+                for (var j = 1; j < (steps.length)/2; j += 2) {                   
+                    setTeamMarker(map, 0);
+                    sleep(5000).then(() => {
+                        console.log("moving");
+                        var marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(steps[j].start_location.lat(), steps[j].start_location.lng()),
+                            map: map,
+                            icon: '/sprint.png'
+                        });
+                    });
+                }
+                
+               
+                
+            }
+            
+
+        }
+
+        function setTeamMarker(map, count) {
+            for (var t = 0; t < count; t++) {
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(psmarkers[psmarkers.length - 1].lat, psmarkers[psmarkers.length - 1].lng),
+                    map: map,
+                    icon: '/sprint.png'
+                });
+            }
+        }
+
+        function setPitStopMarkers(map, psmarkers) {
             for (var i = 0; i < psmarkers.length; i++) {
                 var data = psmarkers[i];
                 var LatLng = new google.maps.LatLng(psmarkers[i].lat, psmarkers[i].lng);
@@ -47,40 +125,14 @@
                     });
                 })(marker, data);
             }
-
-            var request = {
-                origin: new google.maps.LatLng(psmarkers[0].lat, psmarkers[0].lng),
-                destination: new google.maps.LatLng(psmarkers[psmarkers.length - 1].lat, psmarkers[psmarkers.length-1].lng),
-                travelMode: 'WALKING'
-            };
-
-            var steps = [];
-
-            directionsService.route(request, function (result, status) {
-                if (status == 'OK') {
-                    directionsDisplay.setDirections(result);
-                    //console.log(result);
-                    if (result.routes != null) {
-                        steps = result.routes[0].legs[0].steps;
-                    }
-                    console.log(steps);
-
-                }
-            });
-            //console.log(numofTeams);
-            for (var t = 0; t < numofTeams; t++) {
-                var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(psmarkers[psmarkers.length - 1].lat, psmarkers[psmarkers.length - 1].lng),
-                    map: map,
-                    icon: '/sprint.png'
-                });
-            }
-
         }
 
-        function beginSimulation() {
-
+        function sleep(time) {
+            return new Promise((resolve) => setTimeout(resolve, time));
         }
+
+
+        
 
        
 
@@ -126,7 +178,7 @@
                 var result = DateTime.Compare(today.Date, eventDate.Date);
                 if (result == 0 || result > 0 )
                 {
-                    <button click="beginSimulation()">View Live Simulation of the event</button>
+                    <button onclick="beginSimulation()">View Live Simulation of the event</button>
                 }
 
             }
